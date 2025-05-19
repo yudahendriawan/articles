@@ -1,3 +1,7 @@
+---
+title: Belajar Python
+---
+
 # Daftar Artikel Python
 
 - [Pengertian Python](pengertian-python.md)
