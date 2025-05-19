@@ -1,7 +1,5 @@
 ---
-title: Belajar Python
+title: Selamat datang di artikel saya :) !
 ---
 
-- [Pengertian Python](pengertian-python.md)
-- [Cara Install Python](install-python.md)
-- [Predictive Analysis memakai CRISP-DM](predictive-analysis-crisp-dm/predictive-analysis.md)
+- [Predictive Analysis untuk Housing Prices menggunakan metode CRISP-DM](predictive-analysis-crisp-dm/predictive-analysis.md)
