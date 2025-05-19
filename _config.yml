@@ -1,2 +1,4 @@
 title: Yuda Hendriawan Budi Handoko
-theme: jekyll-theme-cayman  # atau theme lain
+remote_theme: pages-themes/architect@v0.2.0
+plugins:
+- jekyll-remote-theme # add this line to the plugins list if you already have one  # atau theme lain
