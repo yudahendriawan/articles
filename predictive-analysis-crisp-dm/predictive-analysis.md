@@ -365,18 +365,6 @@ Pada bagian ini, metrik evaluasi yang digunakan untuk mengukur performa model re
 
 Mean Squared Error (MSE) adalah metrik yang umum digunakan dalam tugas regresi untuk mengukur rata-rata dari kuadrat perbedaan antara nilai prediksi oleh model dan nilai sebenarnya dari data. Secara intuitif, MSE mengukur seberapa dekat garis regresi dengan sekumpulan titik data. Nilai MSE yang lebih rendah menunjukkan bahwa model memiliki kesalahan prediksi yang lebih kecil, dan oleh karena itu, performanya dianggap lebih baik.
 
-### Formula Metrik MSE:
-
-$$
-MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
-$$
-
-Dimana:
-- $n$: adalah jumlah total data poin.
-- $y_i$: adalah nilai sebenarnya (aktual) dari target variabel untuk data poin ke-i.
-- $\hat{y}_i$: adalah nilai yang diprediksi oleh model untuk data poin ke-i.
-- $\sum_{i=1}^{n}$: menunjukkan operasi penjumlahan dari i=1 hingga n.
-
 ### Hasil Evaluasi Model dengan MSE
 
 Setelah dilakukan hyperparameter tuning dengan GridSearchCV, kombinasi parameter terbaik yang menghasilkan performa optimal untuk setiap model adalah sebagai berikut:
