@@ -1,4 +1,8 @@
-# Predictiva Analysis using CRISP-DM method for California Housing problem
+<script type="text/javascript" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+# Predictive Analysis using CRISP-DM method for California Housing problem
 
 ## Domain Proyek
 
@@ -15,11 +19,11 @@ Oleh karena itu, laporan ini mengeksplorasi solusi permasalahan harga rumah mela
 
 1. Identifikasi Fitur Properti yang Paling Berpengaruh Terhadap Harga Rumah
 
-Dari berbagai fitur yang melekat pada sebuah properti, seperti jumlah kamar tidur dan kamar mandi, dan nilai penghasilan area tersebut, fitur mana sajakah yang memiliki pengaruh paling signifikan terhadap fluktuasi harga rumah di pasar tertentu? Memahami hierarki pengaruh fitur-fitur ini akan membantu dalam memberikan bobot yang tepat dalam model prediksi dan mengidentifikasi aspek-aspek kunci yang paling diperhatikan oleh pasar.
+    Dari berbagai fitur yang melekat pada sebuah properti, seperti jumlah kamar tidur dan kamar mandi, dan nilai penghasilan area tersebut, fitur mana sajakah yang memiliki pengaruh paling signifikan terhadap fluktuasi harga rumah di pasar tertentu? Memahami hierarki pengaruh fitur-fitur ini akan membantu dalam memberikan bobot yang tepat dalam model prediksi dan mengidentifikasi aspek-aspek kunci yang paling diperhatikan oleh pasar.
 
 2. Estimasi Harga Pasar Rumah Berdasarkan Karakteristik Tertentu
 
-Berapakah perkiraan harga pasar untuk sebuah rumah dengan karakteristik atau fitur spesifik? Misalnya, berapa estimasi harga untuk rumah dengan luas bangunan 150 m², luas tanah 200 m², berlokasi di Surabaya Barat, memiliki 3 kamar tidur dan 2 kamar mandi? Kemampuan untuk secara akurat memperkirakan harga berdasarkan kombinasi fitur yang berbeda akan sangat berguna bagi calon pembeli, penjual, investor, dan lembaga keuangan dalam melakukan valuasi properti.
+    Berapakah perkiraan harga pasar untuk sebuah rumah dengan karakteristik atau fitur spesifik? Misalnya, berapa estimasi harga untuk rumah dengan luas bangunan 150 m², luas tanah 200 m², berlokasi di Surabaya Barat, memiliki 3 kamar tidur dan 2 kamar mandi? Kemampuan untuk secara akurat memperkirakan harga berdasarkan kombinasi fitur yang berbeda akan sangat berguna bagi calon pembeli, penjual, investor, dan lembaga keuangan dalam melakukan valuasi properti.
 
 ### Goals
 
