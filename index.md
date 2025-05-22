@@ -1,5 +1,5 @@
 ---
-title: Welcome to My Pages 🚀
+title: Welcome to My Little Tech Corner 🚀
 ---
 
 # 👋 Hello and Welcome!
@@ -32,3 +32,5 @@ I hope you find something useful or inspiring here.
 ---
 
 Thanks again for visiting — enjoy your time here! 😊
+
+Let's connect on LinkedIn: [Yuda Hendriawan Budi Handoko](https://www.linkedin.com/in/yudahendriawan/)
