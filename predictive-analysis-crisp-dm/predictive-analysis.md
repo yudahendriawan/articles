@@ -29,11 +29,11 @@ Oleh karena itu, laporan ini mengeksplorasi solusi permasalahan harga rumah mela
 
 1. Menentukan Tingkat Signifikansi Setiap Fitur Properti dalam Mempengaruhi Harga
 
-Tujuan dari pernyataan masalah ini adalah untuk mengidentifikasi dan mengukur tingkat pengaruh setiap fitur properti terhadap harga jual rumah. Melalui analisis <i>Machine Learning</i>, kita akan dapat menentukan fitur mana yang memiliki korelasi terkuat dan kontribusi terbesar dalam memprediksi harga akhir. Hasil ini akan memberikan wawasan penting mengenai preferensi pasar dan faktor-faktor yang paling dihargai oleh pembeli.
+    Tujuan dari pernyataan masalah ini adalah untuk mengidentifikasi dan mengukur tingkat pengaruh setiap fitur properti terhadap harga jual rumah. Melalui analisis <i>Machine Learning</i>, kita akan dapat menentukan fitur mana yang memiliki korelasi terkuat dan kontribusi terbesar dalam memprediksi harga akhir. Hasil ini akan memberikan wawasan penting mengenai preferensi pasar dan faktor-faktor yang paling dihargai oleh pembeli.
 
 2. Mengembangkan Model Prediksi Harga yang Akurat Berdasarkan Kombinasi Fitur
 
-Tujuan dari pernyataan masalah ini adalah untuk membangun sebuah model <i><i>Machine Learning</i></i> yang mampu memprediksi harga pasar rumah secara akurat berdasarkan input karakteristik atau fitur properti yang spesifik. Model ini diharapkan dapat memberikan estimasi harga yang realistis dan berguna sebagai referensi dalam transaksi jual beli properti, pengambilan keputusan investasi, dan penilaian aset oleh lembaga keuangan.
+    Tujuan dari pernyataan masalah ini adalah untuk membangun sebuah model <i><i>Machine Learning</i></i> yang mampu memprediksi harga pasar rumah secara akurat berdasarkan input karakteristik atau fitur properti yang spesifik. Model ini diharapkan dapat memberikan estimasi harga yang realistis dan berguna sebagai referensi dalam transaksi jual beli properti, pengambilan keputusan investasi, dan penilaian aset oleh lembaga keuangan.
 
 ### Solution Statements
 
@@ -41,21 +41,21 @@ Untuk mencapai tujuan yang telah diidentifikasi dalam menjawab pernyataan masala
 
 1. Pengembangan Model Prediksi Harga Rumah dengan Berbagai Algoritma <i>Machine Learning</i>
 
-Untuk mencapai tujuan dalam memprediksi harga rumah secara akurat dan mengidentifikasi pengaruh fitur, solusi yang diajukan adalah dengan mengembangkan dan membandingkan kinerja beberapa algoritma <i><i>Machine Learning</i></i> yang relevan. Algoritma yang akan diimplementasikan meliputi:
+    Untuk mencapai tujuan dalam memprediksi harga rumah secara akurat dan mengidentifikasi pengaruh fitur, solusi yang diajukan adalah dengan mengembangkan dan membandingkan kinerja beberapa algoritma <i><i>Machine Learning</i></i> yang relevan. Algoritma yang akan diimplementasikan meliputi:
 
-- Random Forest: Ensemble learning yang kuat dan dikenal efektif dalam menangani data dengan banyak fitur dan interaksi non-linear.
-- AdaBoost (Adaptive Boosting): Algoritma boosting yang fokus pada perbaikan kesalahan prediksi oleh model-model lemah secara iteratif, sehingga berpotensi meningkatkan akurasi prediksi.
-- Multilayer Perceptron (MLP): Jaringan saraf tiruan feedforward yang mampu memodelkan hubungan yang kompleks antara fitur dan target, serta dapat menangkap pola non-linear.
-- Support Vector Machine (SVM): Algoritma yang efektif dalam ruang fitur berdimensi tinggi dan dapat digunakan untuk regresi (SVR - Support Vector Regression) dalam memprediksi nilai kontinu seperti harga rumah.
+    - Random Forest: Ensemble learning yang kuat dan dikenal efektif dalam menangani data dengan banyak fitur dan interaksi non-linear.
+    - AdaBoost (Adaptive Boosting): Algoritma boosting yang fokus pada perbaikan kesalahan prediksi oleh model-model lemah secara iteratif, sehingga berpotensi meningkatkan akurasi prediksi.
+    - Multilayer Perceptron (MLP): Jaringan saraf tiruan feedforward yang mampu memodelkan hubungan yang kompleks antara fitur dan target, serta dapat menangkap pola non-linear.
+    - Support Vector Machine (SVM): Algoritma yang efektif dalam ruang fitur berdimensi tinggi dan dapat digunakan untuk regresi (SVR - Support Vector Regression) dalam memprediksi nilai kontinu seperti harga rumah.
 
-Selanjutnya, kinerja setiap model akan dievaluasi menggunakan metrik regresi yang relevan seperti Mean Squared Error (MSE) karena ini merupakan metrik yang paling mudah untuk dipahami secara high-level dimana metrik ini akan mem-<i>punished</i> kesalahan-kesalahan yang terjadi selama proses training menjadi lebih besar. Misalnya, jika kesalahannya 1 maka errornya tetap 1, namun ketika kesalahannya 10, maka errornya akan menjadi 100 dimana akan memberikan hukuman yang maksimal sehingga model dapat belajar lebih baik.
-Berikut adalah rumus dari Mean Squared Error:
+    Selanjutnya, kinerja setiap model akan dievaluasi menggunakan metrik regresi yang relevan seperti Mean Squared Error (MSE) karena ini merupakan metrik yang paling mudah untuk dipahami secara high-level dimana metrik ini akan mem-<i>punished</i> kesalahan-kesalahan yang terjadi selama proses training menjadi lebih besar. Misalnya, jika kesalahannya 1 maka errornya tetap 1, namun ketika kesalahannya 10, maka errornya akan menjadi 100 dimana akan memberikan hukuman yang maksimal sehingga model dapat belajar lebih baik.
+    Berikut adalah rumus dari Mean Squared Error:
 
-![Mean Squared Error](https://miro.medium.com/v2/resize:fit:1198/1*BtVajQNj29LkVySEWR_4ww.png)
+    ![Mean Squared Error](https://miro.medium.com/v2/resize:fit:1198/1*BtVajQNj29LkVySEWR_4ww.png)
 
 2. Peningkatan Kinerja Model Prediksi Melalui Hyperparameter Tuning
 
-Setelah mengidentifikasi algoritma dengan kinerja terbaik atau beberapa kandidat model yang menjanjikan, langkah selanjutnya adalah melakukan hyperparameter tuning. Proses ini melibatkan pencarian kombinasi nilai hyperparameter optimal untuk setiap algoritma guna memaksimalkan kinerja prediksi. Teknik tuning yang akan digunakan adalah Grid Search. Grid Search akan melakukan pencarian menyeluruh melalui sekumpulan hyperparameter yang telah ditentukan, dimana diharapkan akan ditemukan kombinasi-kombinasi hyperparameter yang menghasilkan kesalahan minimum. 
+    Setelah mengidentifikasi algoritma dengan kinerja terbaik atau beberapa kandidat model yang menjanjikan, langkah selanjutnya adalah melakukan hyperparameter tuning. Proses ini melibatkan pencarian kombinasi nilai hyperparameter optimal untuk setiap algoritma guna memaksimalkan kinerja prediksi. Teknik tuning yang akan digunakan adalah Grid Search. Grid Search akan melakukan pencarian menyeluruh melalui sekumpulan hyperparameter yang telah ditentukan, dimana diharapkan akan ditemukan kombinasi-kombinasi hyperparameter yang menghasilkan kesalahan minimum. 
 
 ## Data Understanding
 
@@ -136,44 +136,44 @@ Dapat dilihat bahwasannya hasilnya bagus tidak ada nilai missing yang tersembuny
 Untuk mengecek outlier, akan digunakan teknik IQR dan visualisasi menggunakan `boxplot`
 
 1. Fitur MedInc
-![alt text](boxplot_medinc.png)
+    ![alt text](boxplot_medinc.png)
 
-Dari gambar diatas dapat dilihat bahwsannya terdapat banyak outlier pada fitur MedInc
+    Dari gambar diatas dapat dilihat bahwsannya terdapat banyak outlier pada fitur MedInc
 
 2. Fitur HouseAge
-![alt text](house_age.png)
+    ![alt text](house_age.png)
 
-Dari gambar diatas dapat dilihat bahwsannya tidak terdapat outlier pada fitur HouseAge
+    Dari gambar diatas dapat dilihat bahwsannya tidak terdapat outlier pada fitur HouseAge
 
 3. Fitur AveRooms
-![alt text](image-6.png)
+    ![alt text](image-6.png)
 
-Dari gambar diatas dapat dilihat bahwsannya terdapat banyak outlier pada fitur AveRooms
+    Dari gambar diatas dapat dilihat bahwsannya terdapat banyak outlier pada fitur AveRooms
 
 4. Fitur AveBedrms
-![alt text](image-5.png)
+    ![alt text](image-5.png)
 
-Dari gambar diatas dapat dilihat bahwsannya terdapat banyak outlier pada fitur AveBedrms
+    Dari gambar diatas dapat dilihat bahwsannya terdapat banyak outlier pada fitur AveBedrms
 
 5. Fitur Population
-![alt text](image-1.png)
+    ![alt text](image-1.png)
 
-Dari gambar diatas dapat dilihat bahwsannya terdapat banyak outlier pada fitur Population
+    Dari gambar diatas dapat dilihat bahwsannya terdapat banyak outlier pada fitur Population
 
 6. Fitur AveOccup
-![alt text](image-2.png)
+    ![alt text](image-2.png)
 
-Dari gambar diatas dapat dilihat bahwsannya terdapat banyak outlier pada fitur AveOccup
+    Dari gambar diatas dapat dilihat bahwsannya terdapat banyak outlier pada fitur AveOccup
 
 7. Fitur Latitude
-![alt text](image-3.png)
+    ![alt text](image-3.png)
 
-Dari gambar diatas dapat dilihat bahwsannya tidak terdapat outlier pada fitur Latitude
+    Dari gambar diatas dapat dilihat bahwsannya tidak terdapat outlier pada fitur Latitude
 
 8. Fitur Longitude
-![alt text](image-4.png)
+    ![alt text](image-4.png)
 
-Dari gambar diatas dapat dilihat bahwsannya tidak terdapat outlier pada fitur Longitude
+    Dari gambar diatas dapat dilihat bahwsannya tidak terdapat outlier pada fitur Longitude
 
 Setelah melihat visualisasi menggunakan boxplot diatas dan juga menampilkan IQR nya. Dapat dilihat bahwa terdapat beberapa fitur yang memiliki outlier seperti MedInc, AveRooms, AveBedrms, Population, AveOccup. Namun ada beberapa fitur yang tidak memiliki tanda-tanda outlier seperti HouseAge, Latitude, dan Longitude.
 
@@ -275,91 +275,86 @@ Berikut adalah grid parameter yang dieksplorasi untuk setiap algoritma:
 
 1. **Random Forest**
 
-Parameter:
+    Parameter:
 
-- n_estimators: Jumlah pohon dalam hutan `(50, 100)`.
-- max_depth: Kedalaman maksimum pohon `(None, 10, 20)`. None berarti tidak ada batasan kedalaman.
+    - n_estimators: Jumlah pohon dalam hutan `(50, 100)`.
+    - max_depth: Kedalaman maksimum pohon `(None, 10, 20)`. None berarti tidak ada batasan kedalaman.
 
-Kelebihan:
+    Kelebihan:
 
-- Robust terhadap overfitting, terutama dengan jumlah pohon yang banyak.
-- Dapat menangani fitur dengan skala yang berbeda tanpa perlu penskalaan.
-- Memberikan informasi mengenai pentingnya fitur.
-- Dapat menangani data non-linear dengan baik.
+    - Robust terhadap overfitting, terutama dengan jumlah pohon yang banyak.
+    - Dapat menangani fitur dengan skala yang berbeda tanpa perlu penskalaan.
+    - Memberikan informasi mengenai pentingnya fitur.
+    - Dapat menangani data non-linear dengan baik.
 
-Kekurangan:
+    Kekurangan:
 
-- Mungkin kurang efektif untuk data dengan struktur linear yang kuat.
-- Dapat menjadi komputasi mahal dan memakan banyak memori untuk dataset yang sangat besar dan jumlah pohon yang banyak.
-- Sulit untuk diinterpretasikan dibandingkan dengan model linear.
+    - Mungkin kurang efektif untuk data dengan struktur linear yang kuat.
+    - Dapat menjadi komputasi mahal dan memakan banyak memori untuk dataset yang sangat besar dan jumlah pohon yang banyak.
+    - Sulit untuk diinterpretasikan dibandingkan dengan model linear.
 
 2. **AdaBoost**
 
-Parameter:
-- n_estimators: Jumlah base estimator (pohon keputusan lemah) yang akan dilatih secara berurutan `(50, 100)`.
-- learning_rate: Bobot yang diterapkan pada setiap base estimator `(0.01, 0.1, 1)`. Learning rate yang rendah membutuhkan lebih banyak estimator tetapi dapat menghasilkan model yang lebih robust.
+    Parameter:
+    - n_estimators: Jumlah base estimator (pohon keputusan lemah) yang akan dilatih secara berurutan `(50, 100)`.
+    - learning_rate: Bobot yang diterapkan pada setiap base estimator `(0.01, 0.1, 1)`. Learning rate yang rendah membutuhkan lebih banyak estimator tetapi dapat menghasilkan model yang lebih robust.
 
-Kelebihan:
+    Kelebihan:
 
-- Mudah diimplementasikan.
-Dapat meningkatkan akurasi model lemah.
-- Kurang rentan terhadap overfitting dibandingkan dengan algoritma boosting lainnya jika parameter diatur dengan tepat.
+    - Mudah diimplementasikan.
+    Dapat meningkatkan akurasi model lemah.
+    - Kurang rentan terhadap overfitting dibandingkan dengan algoritma boosting lainnya jika parameter diatur dengan tepat.
 
-Kekurangan:
+    Kekurangan:
 
-- Sensitif terhadap noise dan outlier dalam data.
-- Performa sangat bergantung pada kualitas base estimator.
-- Mungkin overfit jika learning rate terlalu tinggi atau jumlah estimator terlalu banyak.
+    - Sensitif terhadap noise dan outlier dalam data.
+    - Performa sangat bergantung pada kualitas base estimator.
+    - Mungkin overfit jika learning rate terlalu tinggi atau jumlah estimator terlalu banyak.
 
 3. **Multi-layer Perceptron (MLP)**
 
-Parameter:
+    Parameter:
 
-- hidden_layer_sizes: Jumlah neuron pada setiap lapisan tersembunyi `((50,), (100,), (100, 50))`.
-- alpha: Parameter regularisasi L2 untuk mencegah overfitting `(0.0001, 0.001)`.
-- learning_rate_init: Tingkat pembelajaran awal untuk pengoptimalan bobot `(0.001, 0.01)`.
-- max_iter: Jumlah maksimum iterasi (epoch) selama pelatihan `(500, 1000)`.
+    - hidden_layer_sizes: Jumlah neuron pada setiap lapisan tersembunyi `((50,), (100,), (100, 50))`.
+    - alpha: Parameter regularisasi L2 untuk mencegah overfitting `(0.0001, 0.001)`.
+    - learning_rate_init: Tingkat pembelajaran awal untuk pengoptimalan bobot `(0.001, 0.01)`.
+    - max_iter: Jumlah maksimum iterasi (epoch) selama pelatihan `(500, 1000)`.
 
-Kelebihan:
+    Kelebihan:
 
-- Mampu mempelajari hubungan non-linear yang kompleks dalam data.
-- Fleksibel dalam pemodelan berbagai jenis data.
-- Dapat mencapai akurasi yang tinggi untuk masalah yang kompleks.
+    - Mampu mempelajari hubungan non-linear yang kompleks dalam data.
+    - Fleksibel dalam pemodelan berbagai jenis data.
+    - Dapat mencapai akurasi yang tinggi untuk masalah yang kompleks.
 
-Kekurangan:
+    Kekurangan:
 
-- Cenderung menjadi black box, sulit untuk diinterpretasikan.
-- Membutuhkan waktu pelatihan yang lebih lama, terutama untuk arsitektur yang dalam dan dataset yang besar.
-- Sensitif terhadap pemilihan hyperparameter dan inisialisasi bobot.
-- Rentan terhadap overfitting jika tidak diregularisasi dengan baik.
+    - Cenderung menjadi black box, sulit untuk diinterpretasikan.
+    - Membutuhkan waktu pelatihan yang lebih lama, terutama untuk arsitektur yang dalam dan dataset yang besar.
+    - Sensitif terhadap pemilihan hyperparameter dan inisialisasi bobot.
+    - Rentan terhadap overfitting jika tidak diregularisasi dengan baik.
 
-Tahapan ini membahas mengenai model <i><i>Machine Learning</i></i> yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
+    Tahapan ini membahas mengenai model <i><i>Machine Learning</i></i> yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
 
 4. **Support Vector Regression (SVR)**
 
-Parameter:
+    Parameter:
 
-- C: Parameter regularisasi. Semakin besar nilai C, semakin besar penalti untuk kesalahan, yang dapat menyebabkan overfitting `(0.1, 1, 10)`.
-- kernel: Fungsi kernel yang digunakan untuk memetakan data ke ruang dimensi yang lebih tinggi `('rbf', 'linear')`. Kernel `'rbf'` (radial basis function) cocok untuk data non-linear, sedangkan `'linear'` cocok untuk data linear.
+    - C: Parameter regularisasi. Semakin besar nilai C, semakin besar penalti untuk kesalahan, yang dapat menyebabkan overfitting `(0.1, 1, 10)`.
+    - kernel: Fungsi kernel yang digunakan untuk memetakan data ke ruang dimensi yang lebih tinggi `('rbf', 'linear')`. Kernel `'rbf'` (radial basis function) cocok untuk data non-linear, sedangkan `'linear'` cocok untuk data linear.
 
-Kelebihan:
+    Kelebihan:
 
-- Efektif dalam ruang dimensi tinggi.
-- Robust terhadap outlier dengan penggunaan kernel yang tepat.
-- Memiliki dasar teoritis yang kuat.
+    - Efektif dalam ruang dimensi tinggi.
+    - Robust terhadap outlier dengan penggunaan kernel yang tepat.
+    - Memiliki dasar teoritis yang kuat.
 
-Kekurangan:
+    Kekurangan:
 
-- Komputasi mahal untuk dataset yang sangat besar.
-- Pemilihan kernel dan hyperparameter yang tepat sangat penting untuk performa model.
-- Kurang intuitif dibandingkan dengan model linear.
+    - Komputasi mahal untuk dataset yang sangat besar.
+    - Pemilihan kernel dan hyperparameter yang tepat sangat penting untuk performa model.
+    - Kurang intuitif dibandingkan dengan model linear.
 
-Setelah dilakukan proses hyperparameter tuning dengan GridSearchCV untuk setiap model, akan dievaluasi performa terbaik yang dicapai oleh masing-masing algoritma pada data pengujian dengan membandingkan nilai dari metrik evaluasi yaitu Mean Squared Error pada Tes Data. Untuk lebih jelasnya mengenai metrik evaluasi akan dijelaskan pada modul selanjutnya.
-
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
-- Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
-- Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. **Jelaskan mengapa memilih model tersebut sebagai model terbaik**.
+    Setelah dilakukan proses hyperparameter tuning dengan GridSearchCV untuk setiap model, akan dievaluasi performa terbaik yang dicapai oleh masing-masing algoritma pada data pengujian dengan membandingkan nilai dari metrik evaluasi yaitu Mean Squared Error pada Tes Data. Untuk lebih jelasnya mengenai metrik evaluasi akan dijelaskan pada modul selanjutnya.
 
 ## Evaluation
 
@@ -375,55 +370,55 @@ Setelah dilakukan hyperparameter tuning dengan GridSearchCV, kombinasi parameter
 
 1. Random Forest
 
-Parameter terbaik yang ditemukan adalah `{'max_depth': 10, 'n_estimators': 100}`. Ini berarti model Random Forest dengan kedalaman maksimum pohon sebesar 10 dan jumlah pohon sebanyak 100 menghasilkan performa terbaik pada data validasi selama proses tuning.
+    Parameter terbaik yang ditemukan adalah `{'max_depth': 10, 'n_estimators': 100}`. Ini berarti model Random Forest dengan kedalaman maksimum pohon sebesar 10 dan jumlah pohon sebanyak 100 menghasilkan performa terbaik pada data validasi selama proses tuning.
 
 2. AdaBoost
 
-Parameter terbaik yang ditemukan adalah `{'learning_rate': 0.1, 'n_estimators': 50}`. Ini mengindikasikan bahwa model AdaBoost dengan tingkat pembelajaran sebesar 0.1 dan jumlah base estimator (weak learner) sebanyak 50 memberikan hasil terbaik.
+    Parameter terbaik yang ditemukan adalah `{'learning_rate': 0.1, 'n_estimators': 50}`. Ini mengindikasikan bahwa model AdaBoost dengan tingkat pembelajaran sebesar 0.1 dan jumlah base estimator (weak learner) sebanyak 50 memberikan hasil terbaik.
 
 3. MLP
 
-Parameter terbaik yang ditemukan adalah `{'alpha': 0.0001, 'hidden_layer_sizes': (100, 50), 'learning_rate_init': 0.001, 'max_iter': 500}`. Konfigurasi ini menunjukkan bahwa arsitektur jaringan saraf tiruan MLP dengan dua lapisan tersembunyi (100 neuron pada lapisan pertama dan 50 neuron pada lapisan kedua), parameter regularisasi L2 sebesar 0.0001, tingkat pembelajaran awal sebesar 0.001, dan jumlah iterasi maksimum sebesar 500 menghasilkan performa terbaik.
+    Parameter terbaik yang ditemukan adalah `{'alpha': 0.0001, 'hidden_layer_sizes': (100, 50), 'learning_rate_init': 0.001, 'max_iter': 500}`. Konfigurasi ini menunjukkan bahwa arsitektur jaringan saraf tiruan MLP dengan dua lapisan tersembunyi (100 neuron pada lapisan pertama dan 50 neuron pada lapisan kedua), parameter regularisasi L2 sebesar 0.0001, tingkat pembelajaran awal sebesar 0.001, dan jumlah iterasi maksimum sebesar 500 menghasilkan performa terbaik.
 
 4. SVR 
 
-Parameter terbaik yang ditemukan adalah `{'C': 1, 'kernel': 'rbf'}`. Ini menunjukkan bahwa model Support Vector Regression dengan parameter regularisasi C sebesar 1 dan penggunaan kernel Radial Basis Function ('rbf') memberikan hasil prediksi terbaik.
+    Parameter terbaik yang ditemukan adalah `{'C': 1, 'kernel': 'rbf'}`. Ini menunjukkan bahwa model Support Vector Regression dengan parameter regularisasi C sebesar 1 dan penggunaan kernel Radial Basis Function ('rbf') memberikan hasil prediksi terbaik.
 
-Kombinasi parameter terbaik ini kemudian digunakan untuk melatih kembali model secara keseluruhan dan dievaluasi performanya pada data pengujian (test set), yang hasilnya telah disajikan sebelumnya. Pemilihan parameter-parameter ini bertujuan untuk memaksimalkan kemampuan generalisasi model terhadap data yang belum pernah dilihat.
+    Kombinasi parameter terbaik ini kemudian digunakan untuk melatih kembali model secara keseluruhan dan dievaluasi performanya pada data pengujian (test set), yang hasilnya telah disajikan sebelumnya. Pemilihan parameter-parameter ini bertujuan untuk memaksimalkan kemampuan generalisasi model terhadap data yang belum pernah dilihat.
 
-Berdasarkan metrik evaluasi Mean Squared Error (MSE), performa dari berbagai model yang telah dilatih dan sebelum di-tune adalah sebagai berikut:
+    Berdasarkan metrik evaluasi Mean Squared Error (MSE), performa dari berbagai model yang telah dilatih dan sebelum di-tune adalah sebagai berikut:
 
-| Model         | Train MSE  | Test MSE  |
-|--------------|------------|-----------|
-| Random Forest | 0.060423  | 2.311445  |
-| AdaBoost      | 0.477667  | 1.857930  |
-| MLP          | 0.381007  | 5.860729  |
-| SVR          | 0.386813  | 1.143348  |
+    | Model         | Train MSE  | Test MSE  |
+    |--------------|------------|-----------|
+    | Random Forest | 0.060423  | 2.311445  |
+    | AdaBoost      | 0.477667  | 1.857930  |
+    | MLP          | 0.381007  | 5.860729  |
+    | SVR          | 0.386813  | 1.143348  |
 
-Kemudian setelah proses hyperparameter tuning, dihasilkan data seperti berikut: 
-| Model         | Train MSE  | Test MSE  |
-|--------------|------------|-----------|
-| Random Forest | 0.257210  | 2.405120  |
-| AdaBoost      | 0.447457  | 1.732050  |
-| MLP          | 0.383181  | 5.808379  |
-| SVR          | 0.386813  | 1.143348  |
+    Kemudian setelah proses hyperparameter tuning, dihasilkan data seperti berikut: 
+    | Model         | Train MSE  | Test MSE  |
+    |--------------|------------|-----------|
+    | Random Forest | 0.257210  | 2.405120  |
+    | AdaBoost      | 0.447457  | 1.732050  |
+    | MLP          | 0.383181  | 5.808379  |
+    | SVR          | 0.386813  | 1.143348  |
 
-Berikut representasi hasil diatas dalam gambar:
-![alt text](image-11.png)
+    Berikut representasi hasil diatas dalam gambar:
+    ![alt text](image-11.png)
 
-Dari tabel dan gambar di atas, dapat diamati bahwa Support Vector Regression (SVR) menunjukkan nilai Test MSE yang paling rendah, yaitu 1.143348 baik pada hasil sebelum maupun sesudah hyperparamteer tuning. Nilai ini mengindikasikan bahwa secara rata-rata, kuadrat perbedaan antara harga rumah yang diprediksi oleh model SVR dan harga rumah sebenarnya pada data pengujian adalah sebesar 1.143348. Karena MSE mengukur besarnya kesalahan prediksi, nilai yang lebih rendah menunjukkan performa model yang lebih baik dalam melakukan prediksi pada data yang belum pernah dilihat.
+    Dari tabel dan gambar di atas, dapat diamati bahwa Support Vector Regression (SVR) menunjukkan nilai Test MSE yang paling rendah, yaitu 1.143348 baik pada hasil sebelum maupun sesudah hyperparamteer tuning. Nilai ini mengindikasikan bahwa secara rata-rata, kuadrat perbedaan antara harga rumah yang diprediksi oleh model SVR dan harga rumah sebenarnya pada data pengujian adalah sebesar 1.143348. Karena MSE mengukur besarnya kesalahan prediksi, nilai yang lebih rendah menunjukkan performa model yang lebih baik dalam melakukan prediksi pada data yang belum pernah dilihat.
 
-Sebaliknya, model MLP memiliki nilai Test MSE yang paling tinggi (5.808379), yang menunjukkan bahwa model ini memiliki kesalahan prediksi yang paling besar di antara model-model yang dievaluasi. Sementara itu, model Random Forest dan AdaBoost menunjukkan nilai Test MSE di antara keduanya, dengan AdaBoost memberikan performa yang lebih baik daripada Random Forest pada data pengujian berdasarkan metrik MSE.
+    Sebaliknya, model MLP memiliki nilai Test MSE yang paling tinggi (5.808379), yang menunjukkan bahwa model ini memiliki kesalahan prediksi yang paling besar di antara model-model yang dievaluasi. Sementara itu, model Random Forest dan AdaBoost menunjukkan nilai Test MSE di antara keduanya, dengan AdaBoost memberikan performa yang lebih baik daripada Random Forest pada data pengujian berdasarkan metrik MSE.
 
-Secara keseluruhan, berdasarkan metrik Mean Squared Error (MSE), SVR terpilih sebagai model terbaik karena kemampuannya dalam menghasilkan prediksi harga rumah yang paling akurat pada data pengujian, yang ditunjukkan oleh nilai MSE yang paling rendah.
+    Secara keseluruhan, berdasarkan metrik Mean Squared Error (MSE), SVR terpilih sebagai model terbaik karena kemampuannya dalam menghasilkan prediksi harga rumah yang paling akurat pada data pengujian, yang ditunjukkan oleh nilai MSE yang paling rendah.
 
-Kemudian, berikut ini adalah contoh hasil prediksi menggunakan model-model terbaik setelah proses tuning:
+    Kemudian, berikut ini adalah contoh hasil prediksi menggunakan model-model terbaik setelah proses tuning:
 
-| y_true | prediksiRF | prediksiBoosting | prediksiMLP | prediksiSVR |
-|--------|------------|-----------------|-------------|-------------|
-| 1.724  | 3.366099   | 2.865025        | 4.757078    | 2.009672    |
+    | y_true | prediksiRF | prediksiBoosting | prediksiMLP | prediksiSVR |
+    |--------|------------|-----------------|-------------|-------------|
+    | 1.724  | 3.366099   | 2.865025        | 4.757078    | 2.009672    |
 
-Pada contoh ini, SVR memberikan prediksi yang paling mendekati nilai sebenarnya.
+    Pada contoh ini, SVR memberikan prediksi yang paling mendekati nilai sebenarnya.
 
 ### Kesimpulan
 

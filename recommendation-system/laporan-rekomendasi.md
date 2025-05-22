@@ -46,34 +46,34 @@ Untuk mencapai tujuan yang telah ditetapkan, proyek ini mengimplementasikan dua 
 
 1. **Pendekatan Filtrasi Berbasis Konten (Content-Based Filtering) dengan TF-IDF Vectorizer dan Cosine Similarity**:
 
-Berikut uraian langkah-langkah pada tahap ini:
+  Berikut uraian langkah-langkah pada tahap ini:
 
-- Ekstraksi Fitur: Film direpresentasikan berdasarkan atribut genre mereka. Kolom genres dari dataset movie dibersihkan dengan menghapus spasi dan mengubahnya menjadi huruf kecil.
-- Vektorisasi Teks: Untuk mengubah genre teks menjadi representasi numerik yang dapat diproses oleh model, TF-IDF Vectorizer dari sklearn.`feature_extraction.text` digunakan. Ini akan menghasilkan matriks TF-IDF di mana setiap baris mewakili film dan setiap kolom mewakili genre, dengan nilai yang menunjukkan pentingnya genre tersebut untuk film (TF-IDF matrix memiliki dimensi 62423 film dan 24 genre unik).
+  - Ekstraksi Fitur: Film direpresentasikan berdasarkan atribut genre mereka. Kolom genres dari dataset movie dibersihkan dengan menghapus spasi dan mengubahnya menjadi huruf kecil.
+  - Vektorisasi Teks: Untuk mengubah genre teks menjadi representasi numerik yang dapat diproses oleh model, TF-IDF Vectorizer dari sklearn.`feature_extraction.text` digunakan. Ini akan menghasilkan matriks TF-IDF di mana setiap baris mewakili film dan setiap kolom mewakili genre, dengan nilai yang menunjukkan pentingnya genre tersebut untuk film (TF-IDF matrix memiliki dimensi 62423 film dan 24 genre unik).
 
-- Perhitungan Kesamaan: Cosine Similarity dihitung antara semua film menggunakan matriks TF-IDF yang telah dibuat. Hasilnya adalah matriks kesamaan (cosine similarity matrix) yang menunjukkan tingkat kemiripan antara setiap pasang film berdasarkan genre mereka. Matriks kesamaan ini kemudian disimpan dalam DataFrame cosine_sim_df.
+  - Perhitungan Kesamaan: Cosine Similarity dihitung antara semua film menggunakan matriks TF-IDF yang telah dibuat. Hasilnya adalah matriks kesamaan (cosine similarity matrix) yang menunjukkan tingkat kemiripan antara setiap pasang film berdasarkan genre mereka. Matriks kesamaan ini kemudian disimpan dalam DataFrame cosine_sim_df.
 
 
-- Mekanisme Rekomendasi: Fungsi `movie_recommendations` dibuat untuk merekomendasikan film. Fungsi ini mengambil judul film, matriks kesamaan, dan jumlah rekomendasi (`k`) sebagai input. Rekomendasi diberikan dengan menemukan film-film yang memiliki nilai cosine similarity tertinggi dengan film input.
+  - Mekanisme Rekomendasi: Fungsi `movie_recommendations` dibuat untuk merekomendasikan film. Fungsi ini mengambil judul film, matriks kesamaan, dan jumlah rekomendasi (`k`) sebagai input. Rekomendasi diberikan dengan menemukan film-film yang memiliki nilai cosine similarity tertinggi dengan film input.
 
-- Evaluasi: Evaluasi dilakukan dengan membandingkan genre movie yang direkomendasikan dengan movie yang digunakan sebagai pencarian, semakin banyak model memberikan genre yang sejenis, maka sistem rekomendasi telah dikatakan berhasil.
+  - Evaluasi: Evaluasi dilakukan dengan membandingkan genre movie yang direkomendasikan dengan movie yang digunakan sebagai pencarian, semakin banyak model memberikan genre yang sejenis, maka sistem rekomendasi telah dikatakan berhasil.
 
 2. **Pendekatan Filtrasi Kolaboratif (Collaborative Filtering) Berbasis Model dengan Neural Network (RecommenderNet)**:
 
-Berikut uraian langkah-langkah pada tahap ini:
+  Berikut uraian langkah-langkah pada tahap ini:
 
-- Persiapan Data: Dataset rating digunakan, dengan kolom timestamp dihilangkan karena tidak relevan untuk model ini. Kolom userId dan movieId di-encode menjadi representasi numerik user dan movie yang unik dan berurutan untuk digunakan dalam model neural network. Rentang rating (0.5 hingga 5.0) juga diidentifikasi.
+  - Persiapan Data: Dataset rating digunakan, dengan kolom timestamp dihilangkan karena tidak relevan untuk model ini. Kolom userId dan movieId di-encode menjadi representasi numerik user dan movie yang unik dan berurutan untuk digunakan dalam model neural network. Rentang rating (0.5 hingga 5.0) juga diidentifikasi.
 
 
-- Normalisasi Rating: Nilai rating dinormalisasi ke rentang 0 hingga 1 menggunakan rumus `(x−min_rating)/(max_rating−min_rating)` untuk kestabilan pelatihan model.
-- Arsitektur Model: Model `RecommenderNet` dikembangkan menggunakan `TensorFlow Keras`. Model ini mengimplementasikan lapisan embedding untuk user dan movie yang belajar representasi laten dari masing-masing entitas. Embedding pengguna dan film digabungkan melalui perkalian titik (dot product), dan ditambahkan bias pengguna serta bias film. Fungsi aktivasi sigmoid diterapkan pada output untuk menghasilkan prediksi rating antara 0 dan 1. Regularisasi L2 diterapkan pada embedding untuk mencegah overfitting.
+  - Normalisasi Rating: Nilai rating dinormalisasi ke rentang 0 hingga 1 menggunakan rumus `(x−min_rating)/(max_rating−min_rating)` untuk kestabilan pelatihan model.
+  - Arsitektur Model: Model `RecommenderNet` dikembangkan menggunakan `TensorFlow Keras`. Model ini mengimplementasikan lapisan embedding untuk user dan movie yang belajar representasi laten dari masing-masing entitas. Embedding pengguna dan film digabungkan melalui perkalian titik (dot product), dan ditambahkan bias pengguna serta bias film. Fungsi aktivasi sigmoid diterapkan pada output untuk menghasilkan prediksi rating antara 0 dan 1. Regularisasi L2 diterapkan pada embedding untuk mencegah overfitting.
 
-- Pelatihan Model: Model dikompilasi dengan `BinaryCrossentropy` sebagai fungsi `loss`, `Adam` optimizer dengan learning rate 0.0001, dan Root Mean Squared Error (RMSE) sebagai metrik evaluasi. Model dilatih selama 50 epochs dengan ukuran batch 2048. 
+  - Pelatihan Model: Model dikompilasi dengan `BinaryCrossentropy` sebagai fungsi `loss`, `Adam` optimizer dengan learning rate 0.0001, dan Root Mean Squared Error (RMSE) sebagai metrik evaluasi. Model dilatih selama 50 epochs dengan ukuran batch 2048. 
 
-- Evaluasi Model: Metrik pelatihan dan validasi (RMSE) dipantau selama pelatihan untuk menilai kinerja model dan mendeteksi overfitting atau underfitting.
-- Mekanisme Rekomendasi: Setelah pelatihan, model digunakan untuk memprediksi rating pengguna untuk film-film yang belum mereka tonton. Film dengan prediksi rating tertinggi kemudian direkomendasikan.
+  - Evaluasi Model: Metrik pelatihan dan validasi (RMSE) dipantau selama pelatihan untuk menilai kinerja model dan mendeteksi overfitting atau underfitting.
+  - Mekanisme Rekomendasi: Setelah pelatihan, model digunakan untuk memprediksi rating pengguna untuk film-film yang belum mereka tonton. Film dengan prediksi rating tertinggi kemudian direkomendasikan.
 
-Dengan mengimplementasikan kedua pendekatan ini secara terpisah, proyek ini dapat menganalisis dan membandingkan efektivitas masing-masing metode dalam menghasilkan rekomendasi film yang relevan dan akurat.
+  Dengan mengimplementasikan kedua pendekatan ini secara terpisah, proyek ini dapat menganalisis dan membandingkan efektivitas masing-masing metode dalam menghasilkan rekomendasi film yang relevan dan akurat.
 
 ## Data Understanding
 
@@ -86,16 +86,16 @@ Variabel-variabel pada dataset yang digunakan adalah sebagai berikut:
 
 1. Dataset `movies.csv`:
 
-- `movieId`: Merupakan ID unik untuk setiap film.
-- `title`: Merupakan judul film, yang juga menyertakan tahun rilis film tersebut.
-- `genres`: Merupakan kategori genre dari film, yang dapat berupa beberapa genre yang dipisahkan oleh karakter pip '`|`'. Contoh: "`Adventure|Animation|Children|Comedy|Fantasy`". Dalam pra-pemrosesan, nilai ini diubah menjadi huruf kecil dan spasi dihilangkan (misalnya "`adventure animation children comedy fantasy`").
+  - `movieId`: Merupakan ID unik untuk setiap film.
+  - `title`: Merupakan judul film, yang juga menyertakan tahun rilis film tersebut.
+  - `genres`: Merupakan kategori genre dari film, yang dapat berupa beberapa genre yang dipisahkan oleh karakter pip '`|`'. Contoh: "`Adventure|Animation|Children|Comedy|Fantasy`". Dalam pra-pemrosesan, nilai ini diubah menjadi huruf kecil dan spasi dihilangkan (misalnya "`adventure animation children comedy fantasy`").
 
 2. Dataset `ratings.csv`:
 
-- `userId`: Merupakan ID unik untuk setiap pengguna yang memberikan rating.
-- `movieId`: Merupakan ID film yang di-rating oleh pengguna.
-- `rating`: Merupakan nilai rating yang diberikan pengguna kepada film, dalam skala 0.5 hingga 5.0. Distribusi rating menunjukkan bahwa rating 4.0 adalah yang paling sering diberikan, diikuti oleh 3.0 dan 5.0.
-- `timestamp`: Merupakan waktu saat rating diberikan (dalam format Unix timestamp). Kolom ini dihilangkan dari analisis karena memang tidak dibutuhkan dalam proses pembentukan sistem rekomendasi pada proyek ini.
+  - `userId`: Merupakan ID unik untuk setiap pengguna yang memberikan rating.
+  - `movieId`: Merupakan ID film yang di-rating oleh pengguna.
+  - `rating`: Merupakan nilai rating yang diberikan pengguna kepada film, dalam skala 0.5 hingga 5.0. Distribusi rating menunjukkan bahwa rating 4.0 adalah yang paling sering diberikan, diikuti oleh 3.0 dan 5.0.
+  - `timestamp`: Merupakan waktu saat rating diberikan (dalam format Unix timestamp). Kolom ini dihilangkan dari analisis karena memang tidak dibutuhkan dalam proses pembentukan sistem rekomendasi pada proyek ini.
 
 ### Analisis Eksplorasi Data
 
@@ -105,183 +105,183 @@ Selain deskripsi variabel diatas, akan digunakan built-in function dari pandas y
 
 1. Dataset `movies.csv`:
 
-```
-<class 'pandas.core.frame.DataFrame'>
-RangeIndex: 62423 entries, 0 to 62422
-Data columns (total 3 columns):
- #   Column   Non-Null Count  Dtype 
----  ------   --------------  ----- 
- 0   movieId  62423 non-null  int64 
- 1   title    62423 non-null  object
- 2   genres   62423 non-null  object
-dtypes: int64(1), object(2)
-memory usage: 1.4+ MB
-```
+  ```
+  <class 'pandas.core.frame.DataFrame'>
+  RangeIndex: 62423 entries, 0 to 62422
+  Data columns (total 3 columns):
+  #   Column   Non-Null Count  Dtype 
+  ---  ------   --------------  ----- 
+  0   movieId  62423 non-null  int64 
+  1   title    62423 non-null  object
+  2   genres   62423 non-null  object
+  dtypes: int64(1), object(2)
+  memory usage: 1.4+ MB
+  ```
 
 2. Dataset `ratings.csv`
 
-```
-<class 'pandas.core.frame.DataFrame'>
-RangeIndex: 25000095 entries, 0 to 25000094
-Data columns (total 4 columns):
- #   Column     Dtype  
----  ------     -----  
- 0   userId     int64  
- 1   movieId    int64  
- 2   rating     float64
- 3   timestamp  int64  
-dtypes: float64(1), int64(3)
-memory usage: 762.9 MB
-```
+  ```
+  <class 'pandas.core.frame.DataFrame'>
+  RangeIndex: 25000095 entries, 0 to 25000094
+  Data columns (total 4 columns):
+  #   Column     Dtype  
+  ---  ------     -----  
+  0   userId     int64  
+  1   movieId    int64  
+  2   rating     float64
+  3   timestamp  int64  
+  dtypes: float64(1), int64(3)
+  memory usage: 762.9 MB
+  ```
 
 Dapat dilihat bahwasannya pada tiap dataset, semua fitur/kolom memiliki jenis tipe data numerik dan objek dimana tidak terdapat missing value.
 
 Selain menggunakan fungsi `info()`, akan dicek data statistik berupa mean, min, max, Q1, Q3 dan lain-lain untuk memastikan tidak ada missing value yang tersembunyi seperti misalnya nilai-nilai non-negatif atau nila tak wajar, dan didapatkan hasil sebagai berikut:
 
 1. Dataset `movies.csv`
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+  <div>
+  <style scoped>
+      .dataframe tbody tr th:only-of-type {
+          vertical-align: middle;
+      }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+      .dataframe tbody tr th {
+          vertical-align: top;
+      }
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>userId</th>
-      <th>movieId</th>
-      <th>rating</th>
-      <th>timestamp</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>2.500010e+07</td>
-      <td>2.500010e+07</td>
-      <td>2.500010e+07</td>
-      <td>2.500010e+07</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>8.118928e+04</td>
-      <td>2.138798e+04</td>
-      <td>3.533854e+00</td>
-      <td>1.215601e+09</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>4.679172e+04</td>
-      <td>3.919886e+04</td>
-      <td>1.060744e+00</td>
-      <td>2.268758e+08</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>1.000000e+00</td>
-      <td>1.000000e+00</td>
-      <td>5.000000e-01</td>
-      <td>7.896520e+08</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>4.051000e+04</td>
-      <td>1.196000e+03</td>
-      <td>3.000000e+00</td>
-      <td>1.011747e+09</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>8.091400e+04</td>
-      <td>2.947000e+03</td>
-      <td>3.500000e+00</td>
-      <td>1.198868e+09</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>1.215570e+05</td>
-      <td>8.623000e+03</td>
-      <td>4.000000e+00</td>
-      <td>1.447205e+09</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>1.625410e+05</td>
-      <td>2.091710e+05</td>
-      <td>5.000000e+00</td>
-      <td>1.574328e+09</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+      .dataframe thead th {
+          text-align: right;
+      }
+  </style>
+  <table border="1" class="dataframe">
+    <thead>
+      <tr style="text-align: right;">
+        <th></th>
+        <th>userId</th>
+        <th>movieId</th>
+        <th>rating</th>
+        <th>timestamp</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>count</th>
+        <td>2.500010e+07</td>
+        <td>2.500010e+07</td>
+        <td>2.500010e+07</td>
+        <td>2.500010e+07</td>
+      </tr>
+      <tr>
+        <th>mean</th>
+        <td>8.118928e+04</td>
+        <td>2.138798e+04</td>
+        <td>3.533854e+00</td>
+        <td>1.215601e+09</td>
+      </tr>
+      <tr>
+        <th>std</th>
+        <td>4.679172e+04</td>
+        <td>3.919886e+04</td>
+        <td>1.060744e+00</td>
+        <td>2.268758e+08</td>
+      </tr>
+      <tr>
+        <th>min</th>
+        <td>1.000000e+00</td>
+        <td>1.000000e+00</td>
+        <td>5.000000e-01</td>
+        <td>7.896520e+08</td>
+      </tr>
+      <tr>
+        <th>25%</th>
+        <td>4.051000e+04</td>
+        <td>1.196000e+03</td>
+        <td>3.000000e+00</td>
+        <td>1.011747e+09</td>
+      </tr>
+      <tr>
+        <th>50%</th>
+        <td>8.091400e+04</td>
+        <td>2.947000e+03</td>
+        <td>3.500000e+00</td>
+        <td>1.198868e+09</td>
+      </tr>
+      <tr>
+        <th>75%</th>
+        <td>1.215570e+05</td>
+        <td>8.623000e+03</td>
+        <td>4.000000e+00</td>
+        <td>1.447205e+09</td>
+      </tr>
+      <tr>
+        <th>max</th>
+        <td>1.625410e+05</td>
+        <td>2.091710e+05</td>
+        <td>5.000000e+00</td>
+        <td>1.574328e+09</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
 
 2. Dataset `ratings.csv`:
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+  <div>
+  <style scoped>
+      .dataframe tbody tr th:only-of-type {
+          vertical-align: middle;
+      }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+      .dataframe tbody tr th {
+          vertical-align: top;
+      }
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>movieId</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>62423.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>122220.387646</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>63264.744844</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>1.000000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>82146.500000</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>138022.000000</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>173222.000000</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>209171.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+      .dataframe thead th {
+          text-align: right;
+      }
+  </style>
+  <table border="1" class="dataframe">
+    <thead>
+      <tr style="text-align: right;">
+        <th></th>
+        <th>movieId</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>count</th>
+        <td>62423.000000</td>
+      </tr>
+      <tr>
+        <th>mean</th>
+        <td>122220.387646</td>
+      </tr>
+      <tr>
+        <th>std</th>
+        <td>63264.744844</td>
+      </tr>
+      <tr>
+        <th>min</th>
+        <td>1.000000</td>
+      </tr>
+      <tr>
+        <th>25%</th>
+        <td>82146.500000</td>
+      </tr>
+      <tr>
+        <th>50%</th>
+        <td>138022.000000</td>
+      </tr>
+      <tr>
+        <th>75%</th>
+        <td>173222.000000</td>
+      </tr>
+      <tr>
+        <th>max</th>
+        <td>209171.000000</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
 
 Berdasarkan kedua tabel diatas, dapat dilihat bahwasannya hasilnya bagus tidak ada nilai missing yang tersembunyi seperti yang dikhawatirkan.
 
@@ -309,36 +309,36 @@ Berikut adalah proses data preparation yang dilakukan secara berurutan:
 
 1. **Mengimpor Library dan Memuat Dataset:**
 
-- Proses: Pertama, library `pandas` diimpor untuk manipulasi data. Kemudian, dataset `movies.csv` dan `ratings.csv` dimuat ke dalam DataFrame movie dan rating secara berturut-turut.
-- Alasan: Ini adalah langkah awal yang esensial untuk memungkinkan akses dan pengelolaan data dalam lingkungan Python.
+  - Proses: Pertama, library `pandas` diimpor untuk manipulasi data. Kemudian, dataset `movies.csv` dan `ratings.csv` dimuat ke dalam DataFrame movie dan rating secara berturut-turut.
+  - Alasan: Ini adalah langkah awal yang esensial untuk memungkinkan akses dan pengelolaan data dalam lingkungan Python.
 
 2. **Pra-pemrosesan Kolom `genres` (untuk Content-Based Filtering):**
 
-- Proses: Kolom `genres` pada `DataFrame` `movie` diubah dengan menghapus karakter spasi `(' ')` dan mengubah semua teks menjadi huruf kecil `(.str.lower())`.
-- Alasan: Standardisasi format `genre` ini penting untuk memastikan konsistensi. Menghilangkan spasi dan mengubah ke huruf kecil menghindari duplikasi `genre` yang sebenarnya sama (misalnya, "Action" dan "action") dan memastikan bahwa TF-IDF Vectorizer dapat memprosesnya dengan benar sebagai entitas tunggal, sehingga perhitungan kesamaan menjadi lebih akurat.
+  - Proses: Kolom `genres` pada `DataFrame` `movie` diubah dengan menghapus karakter spasi `(' ')` dan mengubah semua teks menjadi huruf kecil `(.str.lower())`.
+  - Alasan: Standardisasi format `genre` ini penting untuk memastikan konsistensi. Menghilangkan spasi dan mengubah ke huruf kecil menghindari duplikasi `genre` yang sebenarnya sama (misalnya, "Action" dan "action") dan memastikan bahwa TF-IDF Vectorizer dapat memprosesnya dengan benar sebagai entitas tunggal, sehingga perhitungan kesamaan menjadi lebih akurat.
 
 3. **Menghilangkan Kolom `timestamp` (untuk Collaborative Filtering):**
 
-- Proses: Kolom `timestamp` pada DataFrame rating dihilangkan (dropped) karena tidak relevan untuk perhitungan rating atau rekomendasi dalam konteks model collaborative filtering yang akan dibangun.
-- Alasan: Kolom `timestamp` tidak memberikan informasi langsung tentang preferensi pengguna terhadap film yang diperlukan untuk model collaborative filtering berbasis rating. Menghilangkannya mengurangi kompleksitas data dan kebutuhan memori.
+  - Proses: Kolom `timestamp` pada DataFrame rating dihilangkan (dropped) karena tidak relevan untuk perhitungan rating atau rekomendasi dalam konteks model collaborative filtering yang akan dibangun.
+  - Alasan: Kolom `timestamp` tidak memberikan informasi langsung tentang preferensi pengguna terhadap film yang diperlukan untuk model collaborative filtering berbasis rating. Menghilangkannya mengurangi kompleksitas data dan kebutuhan memori.
 
 4. **Encoding `userId` dan `movieId` (untuk Collaborative Filtering):**
 
-- Proses:
-Daftar `ID` pengguna unik (`user_ids`) dan `ID` film unik (`movie_ids`) dibuat dari `DataFrame` `rating_clean`. Kemudian dua mapping (kamus) dibuat: `user_to_user_encoded` (memetakan `userId` asli ke indeks numerik berurutan) dan `user_encoded_to_user` (memetakan kembali indeks numerik ke `userId` asli). Proses serupa dilakukan untuk `movieId` (`movie_to_movie_encoded` dan `movie_encoded_to_movie`). Kolom baru user dan movie ditambahkan ke `rating_clean` yang berisi `ID` yang sudah di-encode.
-- Alasan: Model neural network memerlukan input numerik yang berurutan. Proses encoding ini mengubah `ID` pengguna dan film yang mungkin tidak berurutan atau terlalu besar menjadi indeks integer yang lebih kecil dan berurutan, yang efisien untuk digunakan sebagai input embedding layer dalam model neural network. Ini juga membantu dalam mengelola jumlah unique user dan movie secara terstruktur.
+  - Proses:
+  Daftar `ID` pengguna unik (`user_ids`) dan `ID` film unik (`movie_ids`) dibuat dari `DataFrame` `rating_clean`. Kemudian dua mapping (kamus) dibuat: `user_to_user_encoded` (memetakan `userId` asli ke indeks numerik berurutan) dan `user_encoded_to_user` (memetakan kembali indeks numerik ke `userId` asli). Proses serupa dilakukan untuk `movieId` (`movie_to_movie_encoded` dan `movie_encoded_to_movie`). Kolom baru user dan movie ditambahkan ke `rating_clean` yang berisi `ID` yang sudah di-encode.
+  - Alasan: Model neural network memerlukan input numerik yang berurutan. Proses encoding ini mengubah `ID` pengguna dan film yang mungkin tidak berurutan atau terlalu besar menjadi indeks integer yang lebih kecil dan berurutan, yang efisien untuk digunakan sebagai input embedding layer dalam model neural network. Ini juga membantu dalam mengelola jumlah unique user dan movie secara terstruktur.
 
 5. **Normalisasi Rating (untuk Collaborative Filtering):**
 
-- Proses: Kolom rating di `DataFrame` `rating_clean` diubah tipe datanya menjadi `float32`. Kemudian, nilai rating dinormalisasi ke rentang antara 0 dan 1 menggunakan rumus: `(x−min_rating)/(max_rating−min_rating)`. Nilai `min_rating` adalah 0.5 dan `max_rating` adalah 5.0.
+  - Proses: Kolom rating di `DataFrame` `rating_clean` diubah tipe datanya menjadi `float32`. Kemudian, nilai rating dinormalisasi ke rentang antara 0 dan 1 menggunakan rumus: `(x−min_rating)/(max_rating−min_rating)`. Nilai `min_rating` adalah 0.5 dan `max_rating` adalah 5.0.
 
-- Alasan: Normalisasi rating ke skala 0-1 adalah praktik umum dalam model neural network, terutama ketika menggunakan fungsi aktivasi sigmoid pada output layer yang menghasilkan nilai antara 0 dan 1. Ini membantu model belajar lebih stabil dan efisien, serta memastikan bahwa loss function (seperti Binary Crossentropy yang digunakan) bekerja dengan baik pada skala output yang sesuai.
+  - Alasan: Normalisasi rating ke skala 0-1 adalah praktik umum dalam model neural network, terutama ketika menggunakan fungsi aktivasi sigmoid pada output layer yang menghasilkan nilai antara 0 dan 1. Ini membantu model belajar lebih stabil dan efisien, serta memastikan bahwa loss function (seperti Binary Crossentropy yang digunakan) bekerja dengan baik pada skala output yang sesuai.
 
 6. **Pembagian Data Latih dan Validasi (untuk Collaborative Filtering):**
 
-- Proses: Data `rating_clean` diacak (shuffled) secara acak dengan `random_state=42` untuk memastikan distribusi data yang merata. Kemudian, data dibagi menjadi set pelatihan (80%) dan set validasi (20%). Variabel `x` berisi pasangan (`user, movie`), dan `y` berisi rating yang dinormalisasi.
+  - Proses: Data `rating_clean` diacak (shuffled) secara acak dengan `random_state=42` untuk memastikan distribusi data yang merata. Kemudian, data dibagi menjadi set pelatihan (80%) dan set validasi (20%). Variabel `x` berisi pasangan (`user, movie`), dan `y` berisi rating yang dinormalisasi.
 
-- Alasan: Pembagian data menjadi set pelatihan dan validasi sangat penting untuk mengevaluasi performa model secara objektif. Data pelatihan digunakan untuk mengajarkan model, sementara data validasi digunakan untuk menguji seberapa baik model dapat menggeneralisasi pada data yang belum pernah dilihat sebelumnya, membantu mendeteksi overfitting. Pengacakan data memastikan bahwa pembagian tersebut representatif.
+  - Alasan: Pembagian data menjadi set pelatihan dan validasi sangat penting untuk mengevaluasi performa model secara objektif. Data pelatihan digunakan untuk mengajarkan model, sementara data validasi digunakan untuk menguji seberapa baik model dapat menggeneralisasi pada data yang belum pernah dilihat sebelumnya, membantu mendeteksi overfitting. Pengacakan data memastikan bahwa pembagian tersebut representatif.
 
 ## Modeling and Result
 
@@ -584,14 +584,14 @@ Proyek ini telah berhasil mengimplementasikan dua pendekatan utama dalam sistem 
 
 1. **Implementasi Sistem Rekomendasi Film Berbasis Konten (Content-Based Filtering) telah berhasil dilakukan untuk secara efektif merekomendasikan film kepada pengguna berdasarkan preferensi mereka terhadap atribut film (genre).**
 
-Melalui penggunaan TF-IDF Vectorizer untuk merepresentasikan genre film dan Cosine Similarity untuk mengukur kemiripan, sistem mampu mengidentifikasi dan merekomendasikan film-film yang memiliki karakteristik konten serupa dengan preferensi pengguna. Output rekomendasi menunjukkan konsistensi yang tinggi dalam hal genre dengan film input, membuktikan efektivitas pendekatan ini dalam menyediakan rekomendasi yang relevan secara kontekstual.
+  Melalui penggunaan TF-IDF Vectorizer untuk merepresentasikan genre film dan Cosine Similarity untuk mengukur kemiripan, sistem mampu mengidentifikasi dan merekomendasikan film-film yang memiliki karakteristik konten serupa dengan preferensi pengguna. Output rekomendasi menunjukkan konsistensi yang tinggi dalam hal genre dengan film input, membuktikan efektivitas pendekatan ini dalam menyediakan rekomendasi yang relevan secara kontekstual.
 
 
 2. **Implementasi Sistem Rekomendasi Film Berbasis Kolaboratif (Collaborative Filtering) telah berhasil dilakukan untuk secara akurat memprediksi preferensi pengguna dan merekomendasikan film berdasarkan pola perilaku pengguna lain yang serupa.**
 
-Dengan membangun dan melatih model Neural Network (RecommenderNet) menggunakan data rating pengguna, proyek ini menunjukkan kemampuan model untuk belajar pola preferensi yang kompleks. Penurunan signifikan pada metrik Root Mean Squared Error (RMSE) selama pelatihan mengindikasikan bahwa model dapat memprediksi rating film dengan akurasi yang baik. Hasil ini memungkinkan sistem untuk merekomendasikan film yang belum ditonton pengguna dengan potensi rating tertinggi, berdasarkan kesamaan perilaku dengan pengguna lain.
+  Dengan membangun dan melatih model Neural Network (RecommenderNet) menggunakan data rating pengguna, proyek ini menunjukkan kemampuan model untuk belajar pola preferensi yang kompleks. Penurunan signifikan pada metrik Root Mean Squared Error (RMSE) selama pelatihan mengindikasikan bahwa model dapat memprediksi rating film dengan akurasi yang baik. Hasil ini memungkinkan sistem untuk merekomendasikan film yang belum ditonton pengguna dengan potensi rating tertinggi, berdasarkan kesamaan perilaku dengan pengguna lain.
 
-Secara keseluruhan, proyek ini berhasil menunjukkan kelayakan dan efektivitas implementasi kedua jenis sistem rekomendasi (content-based dan collaborative) pada dataset film, memberikan landasan yang kuat untuk pengembangan sistem rekomendasi yang lebih canggih di masa mendatang.
+  Secara keseluruhan, proyek ini berhasil menunjukkan kelayakan dan efektivitas implementasi kedua jenis sistem rekomendasi (content-based dan collaborative) pada dataset film, memberikan landasan yang kuat untuk pengembangan sistem rekomendasi yang lebih canggih di masa mendatang.
 
 ## Suggestions
 
