@@ -1,20 +1,34 @@
 ---
-title: Welcome to my pages :) !
+title: Welcome to My Pages 🚀
 ---
 
-## 👋 Welcome!
+# 👋 Hello and Welcome!
 
-Hi there! Thanks for stopping by.
-This page is where I share my thoughts, notes, and projects on Machine Learning, AI, Data Science, and Programming.
+Thanks for stopping by!  
+This is my personal space where I share thoughts, projects, and notes about:
 
-I’ll keep updating both the content and the design. So stay tuned, and feel free to explore or reach out if anything catches your interest!
+- 🧠 Machine Learning  
+- 🤖 Artificial Intelligence  
+- 📊 Data Science  
+- 💻 Programming & Software Development
 
-Enjoy reading my article!
+I'll keep updating both the **content** and the **design** — so stay tuned!  
+If something catches your interest, feel free to explore or reach out.  
+I hope you find something useful or inspiring here.
 
-#### [Classify Alzheimer’s disease (normal and AD) of the ADNI brain data using Convolutional Vision Transformer (CvT)](alzheimer-classification-vision-transformer/README.md)
+---
 
-#### [Predictive Analysis for Housing Prices using CRISP-DM method](predictive-analysis-crisp-dm/predictive-analysis.md)
+## 🔍 Featured Projects
 
-#### [Recommendation System Model Builder to recommend Movie using Content-based and Collaborative Filtering](recommendation-system/laporan-rekomendasi.md)
+### 🧠 Classifying Alzheimer’s Disease using Vision Transformer
+[Classify Alzheimer’s Disease (Normal vs AD) using Convolutional Vision Transformer (CvT)](alzheimer-classification-vision-transformer/README.md)
 
+### 🏠 Housing Price Prediction with CRISP-DM
+[Predictive Analysis for Housing Prices using CRISP-DM Method](predictive-analysis-crisp-dm/predictive-analysis.md)
 
+### 🎬 Movie Recommendation System
+[Movie Recommender using Content-Based & Collaborative Filtering](recommendation-system/laporan-rekomendasi.md)
+
+---
+
+Thanks again for visiting — enjoy your time here! 😊
