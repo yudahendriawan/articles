@@ -136,6 +136,7 @@ Dapat dilihat bahwasannya hasilnya bagus tidak ada nilai missing yang tersembuny
 Untuk mengecek outlier, akan digunakan teknik IQR dan visualisasi menggunakan `boxplot`
 
 1. Fitur MedInc
+
     ![alt text](boxplot_medinc.png)
 
     Dari gambar diatas dapat dilihat bahwsannya terdapat banyak outlier pada fitur MedInc
