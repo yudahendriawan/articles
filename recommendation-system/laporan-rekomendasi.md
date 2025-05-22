@@ -117,6 +117,7 @@ memory usage: 1.4+ MB
 ```
 
 2. Dataset `ratings.csv`
+
 ```
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 25000095 entries, 0 to 25000094
