@@ -1,4 +1,6 @@
-# In-depth Sentiment Analysis with Deep Learning (Study Case: IndoNLU Dataset)
+---
+title: In-depth Sentiment Analysis with Deep Learning (Study Case: IndoNLU Dataset)
+---
 
 ## Introduction: Why is Sentiment Important in the Digital Age?
 

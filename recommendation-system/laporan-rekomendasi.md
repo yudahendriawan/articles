@@ -1,8 +1,10 @@
+---
+title: Pembuatan Sistem Rekomendasi untuk Film/Movie berdasarkan Metode Content-Based dan Collaborative Filtering
+---
+
 <script type="text/javascript" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
-
-# Pembuatan Sistem Rekomendasi untuk Film/Movie berdasarkan Metode Content-Based dan Collaborative Filtering
 
 ## Project Overview
 
