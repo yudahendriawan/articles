@@ -514,7 +514,7 @@ $$
 
 **Penjelasan Variabel:**
 
-* $RMSE$: **Root Mean Squared Error**. Nilai yang menunjukkan seberapa dekat prediksi model dengan nilai sebenarnya. Semakin kecil nilai RMSE, semakin akurat model tersebut.
+* \(RMSE\): **Root Mean Squared Error**. Nilai yang menunjukkan seberapa dekat prediksi model dengan nilai sebenarnya. Semakin kecil nilai RMSE, semakin akurat model tersebut.
 
 * $N$: **Jumlah observasi** atau jumlah data poin dalam dataset yang dievaluasi (misalnya, jumlah *rating*).
 
