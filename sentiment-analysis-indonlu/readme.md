@@ -1,6 +1,8 @@
 ---
-title: In-depth Sentiment Analysis with Deep Learning (Study Case: IndoNLU Dataset)
+title: In-depth Sentiment Analysis with Deep Learning (Study Case of IndoNLU Dataset)
 ---
+
+This project aims to explain in-depth about the sentiment analysis using deep learning method with IndoNLU as the main dataset.
 
 ## Introduction: Why is Sentiment Important in the Digital Age?
 
