@@ -2,9 +2,7 @@
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
 
-# Laporan Proyek Machine Learning Sistem Rekomendasi - Yuda Hendriawan Budi Handoko
-
-## Pembuatan Sistem Rekomendasi untuk Film/Movie berdasarkan Metode Content-Based dan Collaborative Filtering
+# Pembuatan Sistem Rekomendasi untuk Film/Movie berdasarkan Metode Content-Based dan Collaborative Filtering
 
 ## Project Overview
 
