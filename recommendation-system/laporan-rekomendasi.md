@@ -141,6 +141,7 @@ Dapat dilihat bahwasannya pada tiap dataset, semua fitur/kolom memiliki jenis ti
 Selain menggunakan fungsi `info()`, akan dicek data statistik berupa mean, min, max, Q1, Q3 dan lain-lain untuk memastikan tidak ada missing value yang tersembunyi seperti misalnya nilai-nilai non-negatif atau nila tak wajar, dan didapatkan hasil sebagai berikut:
 
 1. Dataset `movies.csv`
+
   <div>
   <style scoped>
       .dataframe tbody tr th:only-of-type {
@@ -314,10 +315,10 @@ Berikut adalah proses data preparation yang dilakukan secara berurutan:
   - Proses: Pertama, library `pandas` diimpor untuk manipulasi data. Kemudian, dataset `movies.csv` dan `ratings.csv` dimuat ke dalam DataFrame movie dan rating secara berturut-turut.
   - Alasan: Ini adalah langkah awal yang esensial untuk memungkinkan akses dan pengelolaan data dalam lingkungan Python.
 
-2. **Pra-pemrosesan Kolom `genres` (untuk Content-Based Filtering):**
+2. **Pra-pemrosesan Kolom `genres` (untuk Content-Based Filtering) dan TF-IDF Vectorizer:**
 
-  - Proses: Kolom `genres` pada `DataFrame` `movie` diubah dengan menghapus karakter spasi `(' ')` dan mengubah semua teks menjadi huruf kecil `(.str.lower())`.
-  - Alasan: Standardisasi format `genre` ini penting untuk memastikan konsistensi. Menghilangkan spasi dan mengubah ke huruf kecil menghindari duplikasi `genre` yang sebenarnya sama (misalnya, "Action" dan "action") dan memastikan bahwa TF-IDF Vectorizer dapat memprosesnya dengan benar sebagai entitas tunggal, sehingga perhitungan kesamaan menjadi lebih akurat.
+  - Proses: Kolom `genres` pada `DataFrame` `movie` diubah dengan menghapus karakter spasi `(' ')` dan mengubah semua teks menjadi huruf kecil `(.str.lower())`. Setelah itu akan dilakukan proses pembentukan representasi film dengan meggunakan `TF-IDF Vectorizer` dan juga perhitungan `Cosine Similarity` yang akan dibahas pada modul selanjutnya di `Modeling dan Result`.
+  - Alasan: Standardisasi format `genre` ini penting untuk memastikan konsistensi. Menghilangkan spasi dan mengubah ke huruf kecil menghindari duplikasi `genre` yang sebenarnya sama (misalnya, "Action" dan "action") dan memastikan bahwa TF-IDF Vectorizer dapat memprosesnya dengan benar sebagai entitas tunggal, sehingga perhitungan kesamaan menjadi lebih akurat. 
 
 3. **Menghilangkan Kolom `timestamp` (untuk Collaborative Filtering):**
 
@@ -349,9 +350,151 @@ Tahap modeling adalah inti dari proyek sistem rekomendasi ini, di mana dua pende
 ### 1. Sistem Rekomendasi Berbasis Konten (Content-Based Filtering)
 
 **Algoritma/Pendekatan**:
-Pendekatan ini menggunakan `TF-IDF Vectorizer` dan `Cosine Similarity` untuk merekomendasikan film berdasarkan kemiripan atribut `genre`.
+Pendekatan ini menggunakan `TF-IDF Vectorizer` dan `Cosine Similarity` untuk merekomendasikan film berdasarkan kemiripan atribut `genre`. Teknik tersebut akan pada sistem rekomendasi untuk menemukan representasi fitur penting dari setiap kategori movie. Dari proses `TF-IDF` didapatkan representasi kategori movie sebagai berikut:
+
+```
+array(['action', 'adventure', 'animation', 'children', 'comedy', 'crime',
+       'documentary', 'drama', 'fantasy', 'fi', 'film', 'genres',
+       'horror', 'imax', 'listed', 'musical', 'mystery', 'no', 'noir',
+       'romance', 'sci', 'thriller', 'war', 'western'], dtype=object)
+```
+
+Kemudian vektor `tf-idf` akan diubah ke dalam bentuk matriks dengan fungsi `todense()` sebagai berikut hasilnya:
+
+```
+matrix([[0.        , 0.44656601, 0.48833049, ..., 0.        , 0.        ,
+         0.        ],
+        [0.        , 0.53979468, 0.        , ..., 0.        , 0.        ,
+         0.        ],
+        [0.        , 0.        , 0.        , ..., 0.        , 0.        ,
+         0.        ],
+        ...,
+        [0.        , 0.        , 0.        , ..., 0.        , 0.        ,
+         0.        ],
+        [0.        , 0.        , 0.        , ..., 0.        , 0.        ,
+         0.        ],
+        [0.60184524, 0.71158276, 0.        , ..., 0.        , 0.        ,
+         0.        ]])
+```
 
 **Pembentukan Representasi Film**: Fitur genres dari setiap film diolah menggunakan `TfidfVectorizer()` untuk menghasilkan representasi numerik. Matriks TF-IDF yang dihasilkan memiliki dimensi 62423 film dengan 24 genre unik. Setiap baris dalam matriks ini mewakili sebuah film, dan nilai di setiap kolom menunjukkan relevansi genre tertentu bagi film tersebut.
+
+Berikut adalah output dari proses tersebut:
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>imax</th>
+      <th>no</th>
+      <th>noir</th>
+      <th>horror</th>
+      <th>musical</th>
+      <th>comedy</th>
+      <th>genres</th>
+      <th>drama</th>
+      <th>romance</th>
+      <th>action</th>
+    </tr>
+    <tr>
+      <th>title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Hills Have Eyes, The (2006)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.688132</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.389166</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Winning Time: Reggie Miller vs. The New York Knicks (2010)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Bernie (1996)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.773558</td>
+      <td>0.0</td>
+      <td>0.633726</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Thumbtanic (1998)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>1.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Cousin cousine (1975)</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.598464</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.801149</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+Dari hasil diatas didapatkan sebuah representasi berupa tabel. Contohnya film `Thumbtanic (1998)` yang memiliki nilai `1.0` di category `comedy` menandakan bahwa film ini bergenre comedy.
 
 **Perhitungan Kesamaan**: Setelah representasi TF-IDF terbentuk, `cosine_similarity` dihitung antara semua film. Ini menghasilkan matriks kesamaan (cosine similarity matrix) dengan dimensi 62423x62423, di mana setiap sel menunjukkan tingkat kemiripan genre antara dua film.
 
@@ -484,20 +627,56 @@ Untuk Content-Based Filtering, evaluasi seringkali bersifat kualitatif atau meng
 
 #### Metrik Evaluasi:
 
-**Relevansi Kualitatif dari Top-N Rekomendasi:**
+**Precision@k**
 
-**Cara Kerja**: Metrik ini melibatkan pemeriksaan manual terhadap film-film yang direkomendasikan untuk melihat apakah mereka secara logis relevan dengan film input berdasarkan genre. Ini adalah pendekatan umum ketika tidak ada data ground truth eksplisit untuk perbandingan.
+Untuk mengevaluasi hasil dari top-N rekomendasi diatas, akan digunakan metrik evaluasi berupa Precision@k.
 
-**Formula**: Tidak ada formula matematis langsung, tetapi bergantung pada subjektivitas dan pemahaman domain.
+**Definisi**: Precision@k (Presisi pada k) adalah metrik yang mengukur seberapa banyak rekomendasi yang diberikan oleh sistem yang telah dibuat yang benar-benar relevan. Bayangkan sistem merekomendasikan `k` film teratas kepada seorang pengguna. Precision@k akan memberitahu dari `k` film tersebut, berapa proporsinya yang relevan.
+
+**Formula**: 
+
+$$\text{Precision@k} = \frac{\text{Jumlah item relevan dalam k rekomendasi teratas}}{\text{k}}$$
+
+Semakin tinggi nilai `Precision@k`, semakin sedikit "sampah" atau rekomendasi tidak relevan yang disaikan kepada pengguna diantara `k` rekomendasi teratas. Ini sangat penting karena pengguna seringkali hanya memperhatikan beberapa rekomendasi pertama daripada melihat semua rekomendasi yang diberikan.
 
 #### Hasil Proyek Berdasarkan Metrik Evaluasi:
 
-Berdasarkan contoh rekomendasi yang dihasilkan untuk film `'Yolanda and the Thief (1945)' (genre: 'fantasy musical romance')`, sistem merekomendasikan film-film lain yang secara konsisten memiliki genre yang sama atau sangat mirip. Ini menunjukkan bahwa:
+Untuk menghitung `Precision@k`, perlu didefinisikan apa itu "relevan" dalam konteks ini. Karena proyek ini menggunakan content-based filtering dengan genre sebagai kontennya, definisi yang paling masuk akal adalah:
 
-- Konsistensi Genre: Rekomendasi yang dihasilkan sangat relevan dari segi genre. Misalnya, film-film seperti "Xanadu (1980)", "Brigadoon (1954)", dan "Paheli (2005)" semuanya mengandung elemen fantasy, musical, atau romance.
-- Kemampuan Menemukan Item Serupa: Model ini berhasil mengidentifikasi dan merekomendasikan film-film yang memiliki karakteristik konten serupa dengan film yang menjadi input, yang merupakan tujuan utama dari content-based filtering.
+**Asumsi Relevansi**: Berdasarkan output top-N rekomendasi dan input diatas, sebuah film dianggap relevan jika setidaknya memiliki genre "fantasy", "musical", dan "romance".
 
-Meskipun evaluasi ini lebih kualitatif, konsistensi output berdasarkan genre mengindikasikan bahwa content-based filtering berhasil diimplementasikan untuk menyediakan rekomendasi yang relevan secara kontekstual. Untuk evaluasi yang lebih formal, pengujian A/B atau survei pengguna akan diperlukan untuk mengukur kepuasan dan tingkat relevansi secara lebih objektif.
+Mari lihat 10 rekomendasi teratas (maka, `k=10`):
+
+| Film Judul dan Tahun | Genre                                | Status Relevansi | Catatan (jika ada)                     |
+| :------------------- | :----------------------------------- | :--------------- | :------------------------------------- |
+| Xanadu (1980)        | fantasy musical romance              | Relevan          |                                        |
+| Brigadoon (1954)     | fantasy musical romance              | Relevan          |                                        |
+| Paheli (2005)        | drama fantasy musical romance        | Relevan          | Memiliki genre inti ditambah 'drama'   |
+| Red Shoes, The (1948)| drama fantasy musical romance        | Relevan          |                                        |
+| Cenerentola '80 (1984)| drama fantasy musical romance        | Relevan          |                                        |
+| Across the Universe (2007)| drama fantasy musical romance        | Relevan          |                                        |
+| That Lady in Ermine (1948)| comedy fantasy musical romance        | Relevan          | Memiliki genre inti ditambah 'comedy'  |
+| Magic Flute, The (Trollflöjten) (1975)| comedy fantasy musical romance        | Relevan          |                                        |
+| Princess Raccoon (Operetta tanuki goten) (2005)| comedy fantasy musical romance        | Relevan          |                                        |
+| Aladin (2009)        | comedy fantasy musical romance        | Relevan          |                                        |
+
+Dari 10 rekomendasi yang diberikan, semua 10 film tersebut memenuhi kriteria relevansi yang ditetapkan (yaitu, mengandung "fantasy", "musical", dan "romance").
+
+Maka, perhitungannya adalah:
+
+- Jumlah item relevan dalam 10 rekomendasi teratas = 10
+- Nilai k = 10
+
+$$ 
+Precision@10 = \frac{10}{10} = 1.0 
+$$
+
+**Interpretasi Hasil**: Nilai Precision@10 sebesar 1.0 adalah hasil yang sangat baik. Ini berarti bahwa dari 10 film teratas yang direkomendasikan oleh sistem, semua 10 film tersebut dianggap relevan berdasarkan kesamaan genre dengan film input.
+
+Ini menunjukkan bahwa sistem content-based filtering yang telah dibuat bekerja dengan sangat efektif dalam menemukan film-film yang memiliki kesamaan genre inti yang kuat dengan film "Yolanda and the Thief". Ketika pengguna melihat 10 rekomendasi pertama, mereka kemungkinan besar akan menemukan bahwa semua rekomendasi tersebut sesuai dengan preferensi genre yang ditunjukkan oleh film input.
+
+Performa `Precision@k` yang tinggi seperti ini adalah indikator bahwa sistem yang telah dibuat mampu memberikan rekomendasi yang sangat akurat dan relevan kepada pengguna pada daftar teratas, yang merupakan hal krusial untuk pengalaman pengguna yang positif.
+
 
 ### Evaluasi Sistem Rekomendasi Kolaboratif (Collaborative Filtering)
 
@@ -514,7 +693,7 @@ $$
 
 **Penjelasan Variabel:**
 
-* \(RMSE\): **Root Mean Squared Error**. Nilai yang menunjukkan seberapa dekat prediksi model dengan nilai sebenarnya. Semakin kecil nilai RMSE, semakin akurat model tersebut.
+* $RMSE$: **Root Mean Squared Error**. Nilai yang menunjukkan seberapa dekat prediksi model dengan nilai sebenarnya. Semakin kecil nilai RMSE, semakin akurat model tersebut.
 
 * $N$: **Jumlah observasi** atau jumlah data poin dalam dataset yang dievaluasi (misalnya, jumlah *rating*).
 
@@ -586,7 +765,7 @@ Proyek ini telah berhasil mengimplementasikan dua pendekatan utama dalam sistem 
 
 1. **Implementasi Sistem Rekomendasi Film Berbasis Konten (Content-Based Filtering) telah berhasil dilakukan untuk secara efektif merekomendasikan film kepada pengguna berdasarkan preferensi mereka terhadap atribut film (genre).**
 
-  Melalui penggunaan TF-IDF Vectorizer untuk merepresentasikan genre film dan Cosine Similarity untuk mengukur kemiripan, sistem mampu mengidentifikasi dan merekomendasikan film-film yang memiliki karakteristik konten serupa dengan preferensi pengguna. Output rekomendasi menunjukkan konsistensi yang tinggi dalam hal genre dengan film input, membuktikan efektivitas pendekatan ini dalam menyediakan rekomendasi yang relevan secara kontekstual.
+  Melalui penggunaan TF-IDF Vectorizer untuk merepresentasikan genre film dan Cosine Similarity untuk mengukur kemiripan, sistem mampu mengidentifikasi dan merekomendasikan film-film yang memiliki karakteristik konten serupa dengan preferensi pengguna menggunakan matrik evaluasi `Precision@k`. Output rekomendasi menunjukkan konsistensi yang tinggi dalam hal genre dengan film input, membuktikan efektivitas pendekatan ini dalam menyediakan rekomendasi yang relevan secara kontekstual.
 
 
 2. **Implementasi Sistem Rekomendasi Film Berbasis Kolaboratif (Collaborative Filtering) telah berhasil dilakukan untuk secara akurat memprediksi preferensi pengguna dan merekomendasikan film berdasarkan pola perilaku pengguna lain yang serupa.**
@@ -607,9 +786,7 @@ Berdasarkan hasil dan pengalaman dari proyek ini, beberapa saran untuk pengemban
 
 - **Optimasi Model dan Hyperparameter Tuning**: Melakukan hyperparameter tuning yang lebih ekstensif untuk model RecommenderNet (misalnya, ukuran embedding, learning rate, jumlah epoch, arsitektur lapisan) dapat lebih mengoptimalkan kinerja model dan mengurangi RMSE.
 
-- **Evaluasi Metrik yang Lebih Komprehensif**: Selain RMSE, evaluasi dapat diperluas dengan metrik lain yang relevan untuk sistem rekomendasi seperti Precision@K, Recall@K, F1-score, Normalized Discounted Cumulative Gain (nDCG), atau metrik keragaman (diversity) dan kebaruan (novelty) untuk mendapatkan gambaran yang lebih holistik tentang kualitas rekomendasi.
-
-- Penerapan Skalabilitas: Untuk dataset yang lebih besar, pertimbangan skalabilitas dalam implementasi model dan infrastruktur (misalnya, menggunakan kerangka kerja komputasi terdistribusi seperti Apache Spark) akan menjadi penting.
+- **Penerapan Skalabilitas**: Untuk dataset yang lebih besar, pertimbangan skalabilitas dalam implementasi model dan infrastruktur (misalnya, menggunakan kerangka kerja komputasi terdistribusi seperti Apache Spark) akan menjadi penting.
 
 ## References
 

@@ -177,7 +177,7 @@ set_seed(19072021)
 
 ### 2. Loading Pre-trained Model and Configuration
 
-The IndoBERT-base-p1 model is loaded along with its tokenizer and configuration.
+The `IndoBERT-base-p`1 model is loaded along with its tokenizer and configuration.
 
 ```Python
 # Load tokenizer and config
@@ -331,7 +331,7 @@ text5 = "Aku padahal bangga banget sama kamu, tapi aku kecewa kenapa kamu memili
 
 ### Summary of Project Achievements
 
-This project successfully developed a Deep Learning-based sentiment analysis model using the IndoBERT-base-p1 architecture. This model effectively classifies Indonesian text sentiment into positive, neutral, and negative categories with high accuracy. Through careful fine-tuning on the smsa_doc_sentiment_prosa dataset, the model showed significant improvement in contextual understanding. This is evident from its ability to handle ambiguous or mixed-connotation sentences with high precision, as demonstrated in the text examples "Sayang, aku marah" and "Merasa kagum... kecewa". The model achieved strong performance metrics on validation data (e.g., Accuracy around 93% and F1-Score around 90-91%), proving its effectiveness and generalization capability.
+This project successfully developed a Deep Learning-based sentiment analysis model using the `IndoBERT-base-p1` architecture. This model effectively classifies Indonesian text sentiment into `positive`, `neutral`, and `negative` categories with high accuracy. Through careful fine-tuning on the `smsa_doc_sentiment_prosa` dataset, the model showed significant improvement in contextual understanding. This is evident from its ability to handle ambiguous or mixed-connotation sentences with high precision, as demonstrated in the text examples "Sayang, aku marah" and "Merasa kagum... kecewa". The model achieved strong performance metrics on validation data (e.g., Accuracy around 93% and F1-Score around 90-91%), proving its effectiveness and generalization capability.
 
 ### Future Development and Further Enhancements
 
