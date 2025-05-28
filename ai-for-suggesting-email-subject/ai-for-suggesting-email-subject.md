@@ -163,7 +163,7 @@ python suggest-email-subject.py
 You should see something like:
 ```Bash
 Suggested Subject Line:
-Application for Software Development Internship – Dinda Ayu
+Application for Software Development Internship – Ronaldo
 ```
 
 ## Final Code 
