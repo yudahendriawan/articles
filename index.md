@@ -20,6 +20,11 @@ I hope you find something useful or inspiring here.
 
 ## 🔍 Featured Projects
 
+### Build an AI Assistant to suggest email subject using OpenAI API
+[Click to see the full project](ai-for-suggesting-email-subject/ai-for-suggesting-email-subject.md)
+
+---
+
 ### Sentimen Analysis with Deep Learning (Study Case: IndoNLU Dataset)
 [In-depth Sentiment Analysis with Deep Learning](sentiment-analysis-indonlu/readme.md)
 
