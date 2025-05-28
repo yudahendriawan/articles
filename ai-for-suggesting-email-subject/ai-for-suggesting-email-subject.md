@@ -137,7 +137,7 @@ We use the `"gpt-4o-mini"` model (you can change it), and pass in our messages.
 
 The response is a structured object—`choices[0].message.content` gives us the actual AI output (our subject line).
 
-- Display: Show the final result
+### Display: Show the final result
 
 ```Python
 def display_subject(context):
