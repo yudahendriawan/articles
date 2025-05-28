@@ -1,6 +1,9 @@
 ---
 title: Build a Simple AI to Suggest Email Subjects using OpenAI API
+layout: default
 ---
+
+<link rel="stylesheet" href="assets/css/custom.css">
 
 Hi Mate, how you garn ?! 👋
 
