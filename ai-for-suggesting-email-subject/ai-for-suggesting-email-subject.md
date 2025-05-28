@@ -1,6 +1,8 @@
-# Build a Simple AI to Suggest Email Subjects using OpenAI API
+---
+title: Build a Simple AI to Suggest Email Subjects using OpenAI API
+---
 
-Hi there! 👋
+Hi Mate, how you garn ?! 👋
 
 Have you ever stared at an email for minutes, even hours, just trying to come up with the perfect subject line?
 You're not alone.
