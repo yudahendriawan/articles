@@ -149,25 +149,6 @@ This function is for the user: it takes an email body, runs it through the whole
 
 ## Run Code
 
-Make sure your script has this at the end so it actually runs:
-
-```Python
-if __name__ == "__main__":
-    display_subject(email_body)
-```
-Now run:
-```Bash
-python suggest-email-subject.py
-```
-
-You should see something like:
-```Bash
-Suggested Subject Line:
-Application for Software Development Internship – Ronaldo
-```
-
-## Final Code 
-
 Before running the code, we need to have the `email_body` example that we want to suggest its subject.
 
 ```Python
@@ -186,6 +167,25 @@ Best regards,
 Ronaldo
 """
 ```
+
+Make sure your script has this at the end so it actually runs:
+
+```Python
+if __name__ == "__main__":
+    display_subject(email_body)
+```
+Now run:
+```Bash
+python suggest-email-subject.py
+```
+
+You should see something like:
+```Bash
+Suggested Subject Line:
+Application for Software Development Internship – Ronaldo
+```
+
+## Final Code 
 
 Finally, this is the final code of the `suggest-email-subject.py`:
 
