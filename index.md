@@ -18,23 +18,23 @@ I hope you find something useful or inspiring here.
 
 ## 🔍 Featured Projects
 
-### [Build an AI Assistant to suggest email subject using OpenAI API](articles/ai-for-suggesting-email-subject/ai-for-suggesting-email-subject.md)
+### [Build an AI Assistant to suggest email subject using OpenAI API](drafts/ai-for-suggesting-email-subject/ai-for-suggesting-email-subject.md)
 
 ---
 
-### [Sentiment Analysis with Deep Learning (Study Case: IndoNLU Dataset)](articles/sentiment-analysis-indonlu/readme.md)
+### [Sentiment Analysis with Deep Learning (Study Case: IndoNLU Dataset)](drafts/sentiment-analysis-indonlu/readme.md)
 
 ---
 
-### [Classifying Alzheimer’s Disease (Normal vs AD) using Convolutional Vision Transformer](articles/alzheimer-classification-vision-transformer/README.md)
+### [Classifying Alzheimer’s Disease (Normal vs AD) using Convolutional Vision Transformer](drafts/alzheimer-classification-vision-transformer/README.md)
 
 ---
 
-### [Predictive Analysis for Housing Prices using CRISP-DM Method](articles/predictive-analysis-crisp-dm/predictive-analysis.md)
+### [Predictive Analysis for Housing Prices using CRISP-DM Method](drafts/predictive-analysis-crisp-dm/predictive-analysis.md)
 
 ---
 
-### [Movie Recommender System using Content-Based & Collaborative Filtering](articles/recommendation-system/laporan-rekomendasi.md)
+### [Movie Recommender System using Content-Based & Collaborative Filtering](drafts/recommendation-system/laporan-rekomendasi.md)
 
 ---
 
