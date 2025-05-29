@@ -39,7 +39,7 @@ source venv/bin/activate  # or venv\Scripts\activate.bat on Windows
 pip install openai python-dotenv
 ```
 
-## Step 3: Set Up API Key
+## Step 2: Set Up API Key
 
 If you have already got the OpenAI Api Key, you can skip this below step.
 
@@ -152,7 +152,7 @@ def display_subject(context):
 
 This function is for the user: it takes an email body, runs it through the whole AI process, and prints the subject line.
 
-## Run Code
+## Step 4: Run Code
 
 Before running the code, we need to have the `email_body` example that we want to suggest its subject.
 
@@ -190,7 +190,7 @@ Suggested Subject Line:
 Application for Software Development Internship – Ronaldo
 ```
 
-## Final Code 
+## Step 5: Final Code 
 
 Finally, this is the final code of the `suggest-email-subject.py`:
 
