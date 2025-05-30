@@ -6,6 +6,16 @@ Hi everyone, welcome back to my articles.
 
 Many small businesses struggle to create brochures for their websites because it takes time, writing skills, and sometimes a designer. I saw this as a problem that AI could help solve. So I started experimenting with OpenAI’s tools to see if I could build something that makes the process easier. The result is a simple AI that helps companies create website brochures quickly—just by answering a few questions. It’s like having a smart assistant that writes and designs for you.
 
+Before diving into every section, these are the outline of this article:
+1. Getting Our Workshop Ready: Setting Up Your Environment
+2. Our Digital Explorer: The Website Class
+3. The Smart Link Filter: Guiding Our Text Engine
+4. The Brochure Builder: Crafting the Story
+5. Results: Brochure Created
+
+Let's go!
+
+
 ## 1. Getting Our Workshop Ready: Setting Up Your Environment 
 Before we dive into building, we need to make sure our Python workspace has all the necessary tools. Think of it like gathering your screwdrivers, wrenches, and blueprints before starting a construction project!
 
