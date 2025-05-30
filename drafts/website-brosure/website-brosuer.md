@@ -513,7 +513,7 @@ After running `create_company_brochure("Hugging Face", "https://huggingface.co")
 
 This is my results:
 
-###########################################################################
+---
 
 --- Brochure Complete! Here's your masterpiece! ---
 # Hugging Face Brochure
@@ -552,6 +552,6 @@ Discover how Hugging Face can transform your AI journey. Whether you're a develo
 
 **Visit us at [Hugging Face](https://huggingface.co)** or **contact us** to learn more about our solutions, career opportunities, and how we can partner to build the future of AI together!
 
-###########################################################################
+---
 
 See ya on the next fun article!
