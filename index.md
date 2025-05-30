@@ -18,6 +18,10 @@ I hope you find something useful or inspiring here.
 
 ## 🔍 Featured Projects
 
+### [Build a Company Brochure from Website using OpenAI API](drafts/website-brosure/website-brosuer.md)
+
+---
+
 ### [Build an AI Assistant to suggest email subject using OpenAI API](drafts/ai-for-suggesting-email-subject/ai-for-suggesting-email-subject.md)
 
 ---
