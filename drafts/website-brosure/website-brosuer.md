@@ -291,7 +291,8 @@ for link_item in huggingface_links_filtered.get("links", []):
 - **Error Handling**: We've included try-except blocks to gracefully handle situations where the website might not respond, or the text engine might return something unexpected.
 
 **Your Next Test**: Run the code block above for `https://huggingface.co`. 
-- What "types" of `links` did our smart filter identify as important? - Do they make sense for a company brochure? 
+- What "types" of `links` did our smart filter identify as important? 
+- Do they make sense for a company brochure? 
 - Try another well-known company website if you like!
 
 ## 4. The Brochure Builder: Crafting the Story
