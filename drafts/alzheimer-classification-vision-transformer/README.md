@@ -83,7 +83,7 @@ This is the sample of the testing dataset:
 
 Furthermore, the training and validation data is augmented to expand and diversify a dataset by applying different transformations to the original data. This technique enhances the performance and generalization ability of models. This is the process of data augmentaion applied:
 
-```Python
+```python
 # tranformation and data augmentation for training data
 transform = transforms.Compose([
         transforms.Resize((224, 224)),
@@ -112,7 +112,7 @@ This is the sample of the testing dataset after augmentation:
 
 ## Hyperparameter and Training Processes
 In the modules.py, this is the hyperparameter used for the model:
-```Python
+```python
 CONV_EMBEDDING_INPUT_CHANNELS=3
 CONV_EMBEDDING_DIM=64
 CONV_EMBEDDING_KERNEL_SIZE=7

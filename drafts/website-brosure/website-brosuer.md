@@ -211,7 +211,7 @@ Prioritize links like "About Us," "Company," "Careers," "Our Team," "What We Off
 
 Now, we'll combine our general instructions with the actual list of links our `Website` explorer found. This is the specific question we'll send to the text-generating engine.
 
-```Python
+```python
 def prepare_link_request_message(website_object):
     """
     Creates the specific message we'll send to the text-generating engine to filter links.
@@ -233,7 +233,7 @@ def prepare_link_request_message(website_object):
 
 This is where the magic happens! We'll send our instructions and the links to the text-generating engine, and it will send back a neatly filtered list.
 
-```Python
+```python
 def get_relevant_links_from_ai(main_website_url):
     """
     Connects to our text-generating engine to intelligently filter and return

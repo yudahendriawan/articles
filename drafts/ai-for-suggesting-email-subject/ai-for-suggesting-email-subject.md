@@ -67,7 +67,7 @@ Set-Content .env "OPENAI_API_KEY=your_openai_key_here"
 
 You can make sure that you already store your API Key correctly, you can create a Python file named `suggest-email-subject.py` and write this Python code:
 
-```Python
+```python
 from dotenv import load_dotenv
 import os
 from openai import OpenAI
@@ -88,7 +88,7 @@ You can continue writing on the `suggest-email-subject.py` code.
 
 This prompt sets the behavior of the AI. In our case, we tell the assistant, "Hey, your job is to create subject lines, and nothing else."
 
-```Python
+```python
 system_prompt = "You are an assistant that is going to suggest an appropriate short subject line for the given email body or contents."
 ```
 
@@ -97,7 +97,7 @@ system_prompt = "You are an assistant that is going to suggest an appropriate sh
 This part wraps the email content in clear instructions, so the AI knows what we’re asking. The `context` here is the actual email body we want to analyze.
 
 
-```Python
+```python
 def user_prompt_for(context):
     return f"You are looking at an email body/content.\nThe body/contents of this email is as follows; please suggest an appropriate short subject of this email:\n\n{context}"
 
@@ -110,7 +110,7 @@ The OpenAI API works in a chat format, so we must send a list of messages. Here 
 1. A `system` message (defines the AI's role)
 2. A `user` message (asks the AI to do something)
 
-```Python
+```python
 def messages_for(email_body):
     return [
         {"role": "system", "content": system_prompt},
@@ -121,13 +121,13 @@ def messages_for(email_body):
 ### Response: Send the request to OpenAPI
 
 You have already import the `OpenAI` library above
-```Python
+```python
 from openai import OpenAI
 ```
 
 Now you can continue writing the code:
 
-```Python
+```python
 def suggest_subjects(email_body):
     openai = OpenAI()
     response = openai.chat.completions.create(
@@ -144,7 +144,7 @@ The response is a structured object—`choices[0].message.content` gives us the 
 
 ### Display: Show the final result
 
-```Python
+```python
 def display_subject(context):
     subject = suggest_subjects(context)
     print("Suggested Subject Line:\n", subject)
@@ -156,7 +156,7 @@ This function is for the user: it takes an email body, runs it through the whole
 
 Before running the code, we need to have the `email_body` example that we want to suggest its subject.
 
-```Python
+```python
 email_body = """
 Dear HR Team,
 
@@ -175,17 +175,17 @@ Ronaldo
 
 Make sure your script has this at the end so it actually runs:
 
-```Python
+```python
 if __name__ == "__main__":
     display_subject(email_body)
 ```
 Now run:
-```Bash
+```bash
 python suggest-email-subject.py
 ```
 
 You should see something like:
-```Bash
+```bash
 Suggested Subject Line:
 Application for Software Development Internship – Ronaldo
 ```
@@ -194,7 +194,7 @@ Application for Software Development Internship – Ronaldo
 
 Finally, this is the final code of the `suggest-email-subject.py`:
 
-```Python
+```python
 from dotenv import load_dotenv
 import os
 from openai import OpenAI
