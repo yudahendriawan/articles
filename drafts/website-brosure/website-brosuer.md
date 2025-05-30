@@ -1,9 +1,6 @@
 ---
-title: How to automatically create a Brochure for website using OpenAI API ?
-layout: default
+title: How to automatically Build a Company Brochure from Website using OpenAI API ?
 ---
-
-<link rel="stylesheet" href="assets/css/custom.css">
 
 Hi everyone, welcome back to my articles.
 
