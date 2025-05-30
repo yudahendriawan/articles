@@ -495,10 +495,7 @@ def create_company_brochure(company_name, main_website_url):
 # And now, the moment you've been waiting for!
 # Let's create a brochure! Try it with your favorite company or a well-known public website.
 # Example:
-create_company_brochure("Hugging Face", "https://huggingface.co")
-
-# Or try with another one!
-# create_company_brochure("OpenAI", "https://openai.com")
+create_company_brochure("Tokopedia", "https://tokopedia.com")
 ```
 
 **Understanding the Final Step**
@@ -512,48 +509,53 @@ create_company_brochure("Hugging Face", "https://huggingface.co")
 
 ## 5. Results
 
-After running `create_company_brochure("Hugging Face", "https://huggingface.co")`. 
+After running `create_company_brochure("Tokopedia", "https://tokopedia.com")`. 
 
 This is my results:
 
 ---
 
 --- Brochure Complete! Here's your masterpiece! ---
-# Hugging Face Brochure
+# Tokopedia Brochure
 
 ## Introduction
-**Hugging Face** is at the forefront of the AI revolution, creating a collaborative platform for the machine learning community. We empower developers, researchers, and enterprises to build, share, and innovate with state-of-the-art AI models, datasets, and applications. Join us in shaping the future of AI!
 
-## About Hugging Face
-Hugging Face is the leading destination for AI enthusiasts and professionals alike. Our platform is designed to foster collaboration, enabling users to discover, create, and deploy machine learning solutions effortlessly. Our mission is to democratize AI, making it accessible and beneficial for everyone.
+Welcome to Tokopedia, Indonesia's leading online marketplace dedicated to creating equal economic opportunities. Our mission is to break down barriers and build a super ecosystem where anyone can start and discover anything.
+
+## About Tokopedia
+
+Tokopedia is a pioneering technology company focused on achieving digital economic equality across the vast archipelago of Indonesia. With over 12 million registered sellers and 638 million products listed, we are committed to empowering people and businesses by providing a comprehensive platform for e-commerce, logistics, and advertising.
 
 ## What We Offer / Solutions
-- **Extensive Model Library:** Access over 1 million pre-trained models across various tasks like text generation, image processing, and more.
-- **Dataset Repository:** Explore and utilize 250k+ datasets tailored for diverse machine learning applications.
-- **User-Friendly Interfaces:** Collaborate through our models and applications seamlessly with integrated tools like Transformers and Inference Endpoints.
-- **Enterprise Solutions:** Tailored plans that include advanced security features, priority support, and dedicated compute resources.
+
+At Tokopedia, we provide a multitude of services designed to simplify commerce for both buyers and sellers:
+- **E-Commerce Platform**: A diverse marketplace featuring various products, including digital goods and instant commerce options.
+- **Integrated Logistics & Fulfillment**: Streamlined shipping solutions that make delivery easy and efficient.
+- **Advertising & Marketing Technology**: Tools to help sellers promote their businesses, including Pay for Performance (P4P) Advertising and customized marketing packages.
 
 ## Our Impact / Success Stories
-Hugging Face is trusted by over 50,000 organizations, including:
-- **Google, Microsoft, and Amazon**: Leading tech companies rely on our platform for cutting-edge AI solutions.
-- **Educational Institutions**: Universities and research labs utilize our tools to advance machine learning research and education.
+
+Our commitment to Indonesia's economy has led to remarkable achievements:
+
+- **Empowerment of Micro-Sellers**: 90% of our sellers are micro-businesses, benefiting from digital adoption during challenging times.
+- **Volume Growth**: 7 out of 10 businesses report increased sales through our platform, with a 133% sales growth during the pandemic.
+- **Financial Inclusion**: Promoting digital payment methods, facilitating access to e-wallets and mobile banking for consumers.
 
 ## Culture & Team
-At Hugging Face, we believe in nurturing a vibrant, inclusive, and innovative culture. Our team is passionate about AI and committed to open-source principles. We value:
-- **Collaboration**: We work together to solve complex challenges.
-- **Transparency**: Open communication fosters trust and creativity.
-- **Diversity**: We embrace different perspectives to drive innovation.
+
+At Tokopedia, we prioritize the well-being of our team, known as Nakama. Our culture is built on inclusivity and development, offering:
+
+- **Career Growth Opportunities**: We support our employees' professional journeys.
+- **Comprehensive Health Benefits**: Ensuring our Nakama's health and wellness is a top priority.
+- **Diverse Leave Options**: Promoting work-life balance with various leave policies.
 
 ## Careers / Join Us
-Looking to make an impact in the AI space? Hugging Face is always on the lookout for passionate individuals to join our team. We offer:
-- **Flexible Work Arrangements**: Work from anywhere, with a healthy work-life balance.
-- **Professional Growth**: Opportunities for learning and development in the rapidly evolving AI landscape.
-- **Community Engagement**: Participate in conferences, workshops, and hackathons.
+
+Be part of our transformative journey! We invite passionate individuals to explore career opportunities that align with their goals and aspirations. At Tokopedia, you will be valued and empowered to make a difference.
 
 ## Conclusion / Call to Action
-Discover how Hugging Face can transform your AI journey. Whether you're a developer, researcher, or business leader, we have the tools and community to help you thrive. 
 
-**Visit us at [Hugging Face](https://huggingface.co)** or **contact us** to learn more about our solutions, career opportunities, and how we can partner to build the future of AI together!
+Discover how Tokopedia is reshaping the digital landscape in Indonesia. For more information, visit our website at [tokopedia.com](https://tokopedia.com) or join our team today! Let’s create opportunities together!
 
 ---
 
