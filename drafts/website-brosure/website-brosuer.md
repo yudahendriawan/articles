@@ -52,7 +52,7 @@ Let's put the very first lines of code into your Python script or Jupyter notebo
 To make it clearer, I add inline comment on the code, you can just read it and type the actual code, or you can just simply copy and paste my code.
 
 ```python
-# import libraries
+# Essential Libraries: These are the tools we just installed!
 import os
 import requests
 import json
@@ -60,23 +60,26 @@ from typing import List
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 from IPython.display import Markdown, display, update_display
-from openai import OpenAI
+from openai import OpenAI # Our connection to the text-generating engine
 
-# Initialize and constants
-
+# --- Initial Setup ---
+# Load our secret API key from the .env file
 load_dotenv(override=True)
 api_key = os.getenv('OPENAI_API_KEY')
 
-if api_key and api_key.startswith('sk-proj-') and len(api_key)>10:
-    print("API key looks good so far")
+# A quick check to make sure our key loaded correctly!
+if api_key and api_key.startswith('sk-proj-') and len(api_key) > 10:
+    print("API key successfully loaded! Ready to build.")
 else:
-    print("There might be a problem with your API key? Please visit the troubleshooting notebook!")
-    
-MODEL = 'gpt-4o-mini'
-openai = OpenAI()
+    print("Uh oh! There might be a problem with your API key. Double-check your .env file and your OpenAI account. 😕")
+
+# We'll use a specific version of the text-generating engine, 'gpt-4o-mini', for efficiency.
+TEXT_GENERATION_MODEL = "gpt-4o-mini"
+# This is how we'll send requests to the text-generating engine.
+text_engine_client = OpenAI()
 ```
 
-Run this code block. If you see "API key looks good so far", you're all set to move on to the next exciting step!
+Run this code block. If you see "API key successfully loaded! Ready to build.", you're all set to move on to the next exciting step!
 
 ## 2. Our Digital Explorer: The `Website` Class
 
