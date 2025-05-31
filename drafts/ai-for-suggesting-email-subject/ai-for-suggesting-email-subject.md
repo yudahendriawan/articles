@@ -36,7 +36,7 @@ source venv/bin/activate  # or venv\Scripts\activate.bat on Windows
 ### Install dependencies:
 
 ```bash
-pip install openai python-dotenv
+pip install openai python-dotenv gradio
 ```
 
 ## Step 2: Set Up API Key
@@ -142,21 +142,29 @@ We use the `"gpt-4o-mini"` model (you can change it), and pass in our messages.
 
 The response is a structured object—`choices[0].message.content` gives us the actual AI output (our subject line).
 
-### Display: Show the final result
+### Display: Show the User Interface
+
+Here, we use `gradio` as the tools to interact with the user, the user can directly input the email body and get the subject recommendation response.
 
 ```python
-def display_subject(context):
-    subject = suggest_subjects(context)
-    print("Suggested Subject Line:\n", subject)
+if __name__ == "__main__":
+    view = gr.Interface(
+    fn=suggest_subjects,
+    inputs=[
+        gr.Textbox(label="Email Body:")],
+    outputs=[gr.Markdown(label="Subjects:")],
+    flagging_mode="never"
+    )
+    view.launch(inbrowser=True)
 ```
 
 This function is for the user: it takes an email body, runs it through the whole AI process, and prints the subject line.
 
-## Step 4: Run Code
+## Step 4: Run Code and Interact with User Interface
 
-Before running the code, we need to have the `email_body` example that we want to suggest its subject.
+Before running the code, we need prepare the example of the email body that we want to suggest its subject. You can use this below example as the email body example you can try
 
-```python
+```
 email_body = """
 Dear HR Team,
 
@@ -175,20 +183,16 @@ Ronaldo
 
 Make sure your script has this at the end so it actually runs:
 
-```python
-if __name__ == "__main__":
-    display_subject(email_body)
-```
-Now run:
+Now, go to the terminal and make sure that you are in the right working directory, type this below command and hit Enter:
+
 ```bash
 python suggest-email-subject.py
 ```
 
-You should see something like:
-```bash
-Suggested Subject Line:
-Application for Software Development Internship – Ronaldo
-```
+You should see interactive user interface like this:
+![image](<CleanShot 2025-06-01 at 05.32.08@2x.png>)
+
+Now you can try other email body example to get the subject recommendation response.
 
 ## Step 5: Final Code 
 
@@ -198,6 +202,8 @@ Finally, this is the final code of the `suggest-email-subject.py`:
 from dotenv import load_dotenv
 import os
 from openai import OpenAI
+
+import gradio as gr
 
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
@@ -221,27 +227,15 @@ def suggest_subjects(email_body):
     )
     return response.choices[0].message.content
 
-def display_subject(context):
-    subject = suggest_subjects(context)
-    print("Suggested Subject Line:\n", subject)
-
-email_body = """
-Dear HR Team,
-
-My name is Ronaldo, a third-year Computer Science student at Universitas Teknologi Nasional. I am writing to express my interest in applying for a software development internship position at [Company Name].
-
-I am particularly drawn to your company’s commitment to innovation and excellence in technology solutions. I have experience working with Python and JavaScript, and I am eager to contribute and learn from your dynamic team.
-
-Attached to this email is my CV for your review. I would be grateful for the opportunity to further discuss how I can support your team during the internship period.
-
-Thank you for considering my application. I look forward to hearing from you.
-
-Best regards,
-Ronaldo
-"""
-
 if __name__ == "__main__":
-    display_subject(email_body)
+    view = gr.Interface(
+    fn=suggest_subjects,
+    inputs=[
+        gr.Textbox(label="Email Body:")],
+    outputs=[gr.Markdown(label="Subjects:")],
+    flagging_mode="never"
+    )
+    view.launch(inbrowser=True)
 
 ```
 
