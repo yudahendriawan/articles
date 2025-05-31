@@ -2,13 +2,10 @@
 title: Welcome to Tech-Vergent 🚀
 ---
 
-Thanks for stopping by!  
-This is my personal space where I share thoughts, projects, and notes about:
+Hi Friends,
 
-🧠 Machine Learning  
-🤖 Artificial Intelligence  
-📊 Data Science  
-💻 Programming & Software Development
+Thanks for stopping by!  
+This is my personal space where I share thoughts, projects, and notes about Machine Learning/AI, Data Science, and Programming & Software Development
 
 I'll keep updating both the **content** and the **design** — so stay tuned!  
 If something catches your interest, feel free to explore or reach out.  
@@ -18,7 +15,7 @@ I hope you find something useful or inspiring here.
 
 ## 🔍 Featured Projects
 
-### [Build a Company Brochure from Website using OpenAI API](drafts/website-brosure/website-brosuer.md)
+### [How to automatically Build a Company Brochure or Website Summarisation using OpenAI API and Gradio?](drafts/website-brosure/website-brosuer.md)
 
 ---
 
