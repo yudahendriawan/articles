@@ -1,5 +1,5 @@
 ---
-title: How to automatically Build a Company Brochure from Website using OpenAI API ?
+title: How to automatically Build a Company Brochure or Website Summarisation using OpenAI API ?
 ---
 
 Hi everyone, welcome back to my articles.
