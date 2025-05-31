@@ -13,7 +13,8 @@ Before diving into every section, these are the outline of this article:
 2. Our Digital Explorer: The Website Class
 3. The Smart Link Filter: Guiding Our Text Engine
 4. The Brochure Builder: Crafting the Story
-5. Results: Brochure Created
+5. Results: Let's Having Fun
+6. Completed: The Final Code
 
 Let's go!
 
@@ -548,7 +549,7 @@ view.launch(inbrowser=True)
 - `inputs`: Here, we construct the input filed using `Textbox` built-in function from `gradio` for company name field and company website field
 - `view.launch(inbrowser=True)`: Here, we launch the `gradio`, and it will be directed to the new tab of the browser so that we can interact with the user interface.
 
-## 5. Results
+## 5. Results: Let's Having Fun 
 
 After following all of those above code, now our `stream_brochure.py` has been completed, we can run this python code by typing this in the terminal, make sure that you have been in the right working directory
 
