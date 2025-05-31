@@ -85,13 +85,13 @@ class Website:
 
 # --- Let's give our Website explorer a test run! ---
 # Pick any website URL you like!
-test_url = "https://www.example.com" # Feel free to change this!
-my_website_explorer = Website(test_url)
+# test_url = "https://www.example.com" # Feel free to change this!
+# my_website_explorer = Website(test_url)
 
-print(f"Our explorer visited: {my_website_explorer.url}")
-print(f"Page Title: {my_website_explorer.title}")
-print(f"Found {len(my_website_explorer.all_links)} links.")
-# print(my_website_explorer.get_clean_contents()[:500] + "..." if len(my_website_explorer.get_clean_contents()) > 500 else my_website_explorer.get_clean_contents()) # Uncomment to see some of the text!
+# print(f"Our explorer visited: {my_website_explorer.url}")
+# print(f"Page Title: {my_website_explorer.title}")
+# print(f"Found {len(my_website_explorer.all_links)} links.")
+# # print(my_website_explorer.get_clean_contents()[:500] + "..." if len(my_website_explorer.get_clean_contents()) > 500 else my_website_explorer.get_clean_contents()) # Uncomment to see some of the text!
 
 # This is our instruction set for the text-generating engine, telling it how to filter links.
 link_filtering_instructions = """
@@ -354,4 +354,4 @@ view = gr.Interface(
     outputs=[gr.Markdown(label="Brochure:")],
     flagging_mode="never"
 )
-view.launch()
+view.launch(inbrowser=True)
