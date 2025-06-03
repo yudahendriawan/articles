@@ -15,6 +15,10 @@ I hope you find something useful or inspiring here.
 
 ## 🔍 Featured Projects
 
+### [Build MoneyMind: Your AI ChatBot Sidekick for Super Smart Spending! 💰 Tools: LLM Tools, Open AI API, and Gradio](drafts/money-minds/money-minds.md)
+
+---
+
 ### [How to automatically Build a Company Brochure or Website Summarisation using OpenAI API and Gradio?](drafts/website-brosure/website-brosuer.md)
 
 ---
